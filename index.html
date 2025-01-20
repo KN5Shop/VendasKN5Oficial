@@ -18,6 +18,17 @@
       padding: 0 20px;
     }
 
+    /* Header de Urgência */
+    .header-urgencia {
+      background-color: #ff4500; /* Cor associada à urgência e ação */
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
     .hero {
       text-align: center;
       background: #ffffff;
@@ -115,10 +126,19 @@
       font-size: 1rem;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
+    /* Efeito hover no botão */
     .product-card button:hover {
       background-color: #1668c1;
+      transform: scale(1.1); /* Aumenta o botão um pouco ao passar o mouse */
+    }
+
+    .product-card .prova-social {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #888;
     }
 
     footer {
@@ -137,96 +157,125 @@
 </head>
 <body>
 
-<div class="container">
-  <!-- Seção Hero -->
-  <div class="hero">
-    <h2><span style="color: #ff4500;">Última Chance:</span> Economize Até 50% Hoje!</h2>
-    <p>
-      Descubra os segredos para aproveitar as ofertas que estão mudando a vida de nossos clientes.
-      Estoques limitados e preços que você não verá novamente. Decida agora!
-    </p>
-    <button class="cta-button">Aproveitar Agora</button>
+  <!-- Header de Urgência -->
+  <div class="header-urgencia">
+    Oferta válida somente essa semana
   </div>
 
-  <!-- Lista de Produtos -->
-  <div class="products">
-    <!-- Produto 1: 1 Caixa -->
-    <div class="product-card">
-      <img src="imagens/1.png" alt="Máscara Descartável Descarpack">
-      <h3>1 Caixa de Máscaras Descartáveis Descarpack (50 Unidades)</h3>
-      <p>Proteção e conforto em cada uso. Ideal para o seu dia a dia.</p>
-      <p class="price">
-        <span class="discount">De: R$ 10,00</span>
-        Por: <span style="color: #ff4500;">R$ 5,00</span>
+  <div class="container">
+    <!-- Seção Hero -->
+    <div class="hero">
+      <h2><span style="color: #ff4500;">Última Chance:</span> Economize Até 50% Hoje!</h2>
+      <p>
+        Descubra os segredos para aproveitar as ofertas que estão mudando a vida de nossos clientes.
+        Estoques limitados e preços que você não verá novamente. Decida agora!
       </p>
-      <button>Comprar Agora</button>
+      <button class="cta-button">Aproveitar Agora</button>
     </div>
 
-    <!-- Produto 2: 5 Caixas -->
-    <div class="product-card">
-      <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
-      <h3>5 Caixas de Máscaras Descartáveis Descarpack (250 Unidades)</h3>
-      <p>Compre em quantidade e economize ainda mais. A solução ideal para empresas e grandes famílias!</p>
-      <p class="price">
-        <span class="discount">De: R$ 50,00</span>
-        Por: <span style="color: #ff4500;">R$ 25,00</span>
-      </p>
-      <button>Comprar Agora</button>
-    </div>
+    <!-- Lista de Produtos -->
+    <div class="products">
+      <!-- Produto 1: 1 Caixa -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscara Descartável Descarpack">
+        <h3>1 Caixa de Máscaras Descartáveis Descarpack (50 Unidades)</h3>
+        <p>Proteção e conforto em cada uso. Ideal para o seu dia a dia.</p>
+        <p class="price">
+          <span class="discount">De: R$ 10,00</span>
+          Por: <span style="color: #ff4500;">R$ 5,00</span>
+        </p>
+        <button>Comprar Agora</button>
+        <div class="prova-social">
+          <p>★★★★★ - "Excelente qualidade!"</p>
+          <p>Mais de 3000 clientes satisfeitos!</p>
+        </div>
+      </div>
 
-    <!-- Produto 3: 10 Caixas -->
-    <div class="product-card">
-      <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
-      <h3>10 Caixas de Máscaras Descartáveis Descarpack (500 Unidades)</h3>
-      <p>Oferta imperdível para quem deseja maior economia com proteção. Estoques limitados!</p>
-      <p class="price">
-        <span class="discount">De: R$ 100,00</span>
-        Por: <span style="color: #ff4500;">R$ 50,00</span>
-      </p>
-      <button>Comprar Agora</button>
-    </div>
+      <!-- Produto 2: 5 Caixas -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
+        <h3>5 Caixas de Máscaras Descartáveis Descarpack (250 Unidades)</h3>
+        <p>Compre em quantidade e economize ainda mais. A solução ideal para empresas e grandes famílias!</p>
+        <p class="price">
+          <span class="discount">De: R$ 50,00</span>
+          Por: <span style="color: #ff4500;">R$ 25,00</span>
+        </p>
+        <button>Comprar Agora</button>
+        <div class="prova-social">
+          <p>★★★★★ - "Melhor preço do mercado!"</p>
+          <p>Mais de 5000 caixas vendidas!</p>
+        </div>
+      </div>
 
-    <!-- Produto 4: 50 Caixas -->
-    <div class="product-card">
-      <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
-      <h3>50 Caixas de Máscaras Descartáveis Descarpack (2500 Unidades)</h3>
-      <p>Proteção em grande escala. Ideal para empresas ou revenda.</p>
-      <p class="price">
-        <span class="discount">De: R$ 500,00</span>
-        Por: <span style="color: #ff4500;">R$ 250,00</span>
-      </p>
-      <button>Comprar Agora</button>
-    </div>
+      <!-- Produto 3: 10 Caixas -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
+        <h3>10 Caixas de Máscaras Descartáveis Descarpack (500 Unidades)</h3>
+        <p>Oferta imperdível para quem deseja maior economia com proteção. Estoques limitados!</p>
+        <p class="price">
+          <span class="discount">De: R$ 100,00</span>
+          Por: <span style="color: #ff4500;">R$ 50,00</span>
+        </p>
+        <button>Comprar Agora</button>
+        <div class="prova-social">
+          <p>★★★★★ - "Entrega rápida e produto de qualidade!"</p>
+          <p>Compra realizada por mais de 4000 clientes.</p>
+        </div>
+      </div>
 
-    <!-- Produto 5: 100 Caixas -->
-    <div class="product-card">
-      <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
-      <h3>100 Caixas de Máscaras Descartáveis Descarpack (5000 Unidades)</h3>
-      <p>Estoque massivo para atender grandes necessidades. Garanta a maior economia!</p>
-      <p class="price">
-        <span class="discount">De: R$ 1000,00</span>
-        Por: <span style="color: #ff4500;">R$ 500,00</span>
-      </p>
-      <button>Comprar Agora</button>
-    </div>
+      <!-- Produto 4: 50 Caixas -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
+        <h3>50 Caixas de Máscaras Descartáveis Descarpack (2500 Unidades)</h3>
+        <p>Proteção em grande escala. Ideal para empresas ou revenda.</p>
+        <p class="price">
+          <span class="discount">De: R$ 500,00</span>
+          Por: <span style="color: #ff4500;">R$ 250,00</span>
+        </p>
+        <button>Comprar Agora</button>
+        <div class="prova-social">
+          <p>★★★★★ - "Excelente custo-benefício!"</p>
+          <p>Mais de 1500 empresas já compraram.</p>
+        </div>
+      </div>
 
-    <!-- Produto 6: 1000 Caixas -->
-    <div class="product-card">
-      <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
-      <h3>1000 Caixas de Máscaras Descartáveis Descarpack (50000 Unidades)</h3>
-      <p>A maior oferta. Ideal para grandes negócios ou revendedores.</p>
-      <p class="price">
-        <span class="discount">De: R$ 10000,00</span>
-        Por: <span style="color: #ff4500;">R$ 5000,00</span>
-      </p>
-      <button>Comprar Agora</button>
+      <!-- Produto 5: 100 Caixas -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
+        <h3>100 Caixas de Máscaras Descartáveis Descarpack (5000 Unidades)</h3>
+        <p>Estoque massivo para atender grandes necessidades. Garanta a maior economia!</p>
+        <p class="price">
+          <span class="discount">De: R$ 1000,00</span>
+          Por: <span style="color: #ff4500;">R$ 500,00</span>
+        </p>
+        <button>Comprar Agora</button>
+        <div class="prova-social">
+          <p>★★★★★ - "Compra segura e entrega ágil!"</p>
+          <p>Mais de 1000 compras realizadas!</p>
+        </div>
+      </div>
+
+      <!-- Produto 6: 1000 Caixas -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
+        <h3>1000 Caixas de Máscaras Descartáveis Descarpack (50000 Unidades)</h3>
+        <p>A maior oferta. Ideal para grandes negócios ou revendedores.</p>
+        <p class="price">
+          <span class="discount">De: R$ 10000,00</span>
+          Por: <span style="color: #ff4500;">R$ 5000,00</span>
+        </p>
+        <button>Comprar Agora</button>
+        <div class="prova-social">
+          <p>★★★★★ - "A melhor escolha para revenda!"</p>
+          <p>Mais de 500 empresas adquiriram!</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<footer>
-  <p>© 2025 Nossa Loja. Todos os direitos reservados.</p>
-</footer>
+  <footer>
+    <p>© 2025 Nossa Loja. Todos os direitos reservados.</p>
+  </footer>
 
 </body>
 </html>
