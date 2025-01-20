@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja Online - Promoções Exclusivas</title>
+  <title>Loja Online - Promoções Imperdíveis</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,12 +20,12 @@
     }
 
     header h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin: 0;
     }
 
     header p {
-      font-size: 1rem;
+      font-size: 1.2rem;
       margin: 5px 0 0;
     }
 
@@ -43,22 +43,34 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .hero img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
     .hero h2 {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       color: #333;
       margin: 20px 0 10px;
+      line-height: 1.4;
     }
 
     .hero p {
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: #555;
       margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      background-color: #ff4500;
+      color: white;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      border: none;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #e03d00;
     }
 
     .products {
@@ -136,41 +148,44 @@
 <body>
 
 <header>
-  <h1>Promoções Exclusivas da Nossa Loja</h1>
-  <p>Produtos incríveis com preços imperdíveis!</p>
+  <h1>Aproveite as Melhores Promoções de 2025</h1>
+  <p>Produtos incríveis com ofertas exclusivas para você.</p>
 </header>
 
 <div class="container">
   <!-- Seção Hero -->
   <div class="hero">
-    <img src="imagens/1.png" alt="Promoção Especial">
-    <h2>Descontos de até 50%!</h2>
-    <p>Garanta já os melhores produtos com descontos especiais.</p>
+    <h2><span style="color: #ff4500;">Última Chance:</span> Economize Até 50% Hoje!</h2>
+    <p>
+      Descubra os segredos para aproveitar as ofertas que estão mudando a vida de nossos clientes.
+      Estoques limitados e preços que você não verá novamente. Decida agora!
+    </p>
+    <button class="cta-button">Aproveitar Agora</button>
   </div>
 
   <!-- Lista de Produtos -->
   <div class="products">
     <div class="product-card">
       <img src="imagens/1.png" alt="Produto 1">
-      <h3>Produto 1</h3>
-      <p>Descrição breve do produto com suas vantagens.</p>
-      <p class="price">R$ 49,90</p>
+      <h3>Produto Incrível 1</h3>
+      <p>A solução perfeita para o seu dia a dia. Garantia de qualidade e eficiência!</p>
+      <p class="price">De: R$ 99,90<br>Por: <span style="color: #ff4500;">R$ 49,90</span></p>
       <button>Comprar Agora</button>
     </div>
 
     <div class="product-card">
       <img src="imagens/1.png" alt="Produto 2">
-      <h3>Produto 2</h3>
-      <p>Descrição breve do produto com suas vantagens.</p>
-      <p class="price">R$ 79,90</p>
+      <h3>Produto Exclusivo 2</h3>
+      <p>Transforme sua rotina com este produto inovador. Aproveite enquanto dura!</p>
+      <p class="price">De: R$ 149,90<br>Por: <span style="color: #ff4500;">R$ 79,90</span></p>
       <button>Comprar Agora</button>
     </div>
 
     <div class="product-card">
       <img src="imagens/1.png" alt="Produto 3">
-      <h3>Produto 3</h3>
-      <p>Descrição breve do produto com suas vantagens.</p>
-      <p class="price">R$ 99,90</p>
+      <h3>Produto Especial 3</h3>
+      <p>Mais do que um produto, uma experiência única. Seu momento é agora!</p>
+      <p class="price">De: R$ 199,90<br>Por: <span style="color: #ff4500;">R$ 99,90</span></p>
       <button>Comprar Agora</button>
     </div>
   </div>
