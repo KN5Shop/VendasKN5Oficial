@@ -8,9 +8,8 @@
     <meta name="keywords" content="Leilão, Lances, Carros, Veículos, KN5 Store, Leilão de Carros">
     <meta name="author" content="KN5 Store">
     <title>KN5 Store - Leilão de Carros</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Resetando padrões */
+        /* Reset e estilo base */
         * {
             margin: 0;
             padding: 0;
@@ -18,29 +17,31 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #2c3e50;
-            color: white;
+            font-family: 'Helvetica', sans-serif;
+            background-color: #141414; /* Preto */
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            height: 100%;
+            height: 100vh;
+            padding: 0;
             margin: 0;
-            padding-top: 20px;
         }
 
         .container {
-            width: 80%;
+            width: 100%;
             max-width: 1200px;
+            padding: 40px;
             text-align: center;
         }
 
         /* Header */
         header {
             padding: 20px;
-            background-color: #1a242f;
-            width: 100%;
-            text-align: center;
+            background-color: #1f1f1f; /* Preto suave */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         header .logo img {
@@ -57,26 +58,32 @@
             align-items: center;
             text-align: center;
             color: white;
-            background-size: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .banner h1 {
-            font-size: 48px;
+            font-size: 50px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
         }
 
         .banner p {
-            font-size: 24px;
+            font-size: 22px;
             margin-bottom: 20px;
         }
 
         .btn-primary {
-            padding: 12px 24px;
+            padding: 12px 28px;
             background-color: #e74c3c;
             color: white;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 30px;
             font-size: 18px;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: background-color 0.3s ease;
         }
 
         .btn-primary:hover {
@@ -85,41 +92,45 @@
 
         /* Lote */
         .lote {
-            background-color: #34495e;
-            padding: 30px;
-            margin: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            background-color: #222222; /* Preto suave */
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         .lote-header h2 {
-            font-size: 30px;
-            margin-bottom: 15px;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
         }
 
         .lote-header p {
-            font-size: 22px;
+            font-size: 20px;
             color: #e74c3c;
         }
 
-        .lote-header img {
-            max-width: 80%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
         .lote-info ul {
-            list-style-type: none;
-            padding: 0;
+            list-style: none;
+            font-size: 18px;
+            margin: 20px 0;
         }
 
         .lote-info li {
-            font-size: 18px;
             margin-bottom: 10px;
         }
 
         .lote-info li strong {
             color: #e74c3c;
+        }
+
+        .lote-image {
+            max-width: 80%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .lance {
@@ -133,22 +144,28 @@
         }
 
         .como-funciona {
-            background-color: #34495e;
-            padding: 30px;
+            background-color: #222222; /* Preto suave */
+            padding: 40px;
             margin-top: 50px;
             text-align: center;
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         .como-funciona h2 {
+            font-size: 32px;
             margin-bottom: 30px;
+            font-weight: bold;
+            color: #e74c3c;
         }
 
         .como-funciona ul {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 20px;
             font-size: 18px;
+            color: #ecf0f1;
+            text-align: left;
         }
 
         .como-funciona li {
@@ -156,15 +173,14 @@
         }
 
         footer {
-            background-color: #1a242f;
-            color: white;
+            background-color: #1f1f1f;
             padding: 20px;
-            text-align: center;
             margin-top: 50px;
+            text-align: center;
         }
 
         footer ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
             margin-bottom: 15px;
         }
@@ -175,15 +191,21 @@
         }
 
         footer ul li a {
-            color: white;
+            color: #e74c3c;
             text-decoration: none;
+            font-size: 18px;
         }
 
         footer ul li a:hover {
             text-decoration: underline;
         }
 
-        /* Ajuste para garantir a responsividade */
+        footer p {
+            font-size: 16px;
+            color: #95a5a6;
+        }
+
+        /* Responsividade */
         @media (max-width: 768px) {
             .banner h1 {
                 font-size: 36px;
@@ -227,7 +249,6 @@
         <section class="lote">
             <div class="lote-header">
                 <h2>Lote 001: Honda New City Sed. Touring 1.5 Flex 4P</h2>
-                <!-- Imagem do veículo no lote -->
                 <img src="imagens/1.png" alt="Honda New City Sed. Touring 1.5 Flex 4P" class="lote-image">
                 <p><strong>Valor: R$ 57.800,00 + Despesas</strong></p>
             </div>
