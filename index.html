@@ -1,827 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-
-<!doctype html>
-<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lote - Milan Leilões</title>
-    <meta name=" description " content="Leilão de carros, Leilao de carros, Leilão de Imóveis, Leilão de artes, Leilão no Brasil, Imoveis, Imovéis, loteamento, Inservíveis, sucata, leilão de peças, terrenos no brasil, carros usados, ford, focus, ecoesport, São Paulo, Leiloeiro, Ronaldo Milan,Milan Leilões, Milano, Milla, Milan, SPm leilões, Spm, leilões, apartamentos, loft, mansão, casa, investimento, leilão de motos, tratores, maquinas, oportunidades">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-      
-    <link rel="stylesheet" type="text/css" href="/Includes/colorbox-master/colorbox.css" />
-    <link href="lote.css" rel="stylesheet" />
-
-    <meta property="og:url" content="https://www.milanleiloes.com.br/Leiloes/Lance/lote.asp" />
-    <meta property="fb:app_id" content="447332972499901" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Oportunidade na Milan Leilões" />
-    <meta property="og:image" content="https://www.milanleiloes.com.br/" />
-    <meta property="og:description" content="" />
-    <meta property="og:site_name" content="Milan Leilões" />
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16507964452"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-16507964452');
-    </script>
-
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/Includes/colorbox-master/jquery.colorbox-min.js"></script>
-    <script type="text/javascript" src="/Includes/colorbox-master/i18n/jquery.colorbox-pt-br.js"></script>
-    <script type="text/javascript" src="/js/hashNav.js"></script>
-
-
-    <style type="text/css">
-        .html-symbol { font-family: sans-serif, arial; }
-        .myBox { 
-            border: solid 2px #e0e0e0;
-            background-color:#fff;
-        }
-
-        html, body {
-            height: 100%;
-        }
-        .btn-success.darLance {
-            color: #000;
-            background-color: #51ff79;
-            border-color: #51ff79;	
-        }
-
-        .is-invalid {
-	      border: 1px solid red !important;
-	    }
-	    
-	    .input-error {
-		  border: 1px solid red !important;
-		}
-	    
-	    .invalid-feedback {
-	      color: red;
-	      font-size: 16px;	      
-	    }
-
-        .is-success {
-	      border: 1px solid green !important;
-	    }
-
-        .input-success {
-		  border: 1px solid green !important;
-		}
-        
-        .success-feedback {
-	      color: green;
-	      font-size: 16px;	      
-	    }
-    </style>
-
-    
-
-    <script type="text/javascript" src="/Includes/NumberFormat154.js"></script>
-    <script type="text/javascript" src="/js/moment.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.maskMoney.min.js"></script>
-
-    <script type="text/javascript" src="js/auxJs.js?v=06.01.25"></script>
-    <script type="text/javascript" src="js/lote.js?v=06.01.25"></script>
-    <script type="text/javascript" src="js/lances.js?v=06.01.25"></script>
-    <script type="text/javascript" src="js/view.js?v=06.01.25"></script>
-    <script type="text/javascript" src="js/userControl.js?v=06.01.25"></script>
-    <script type="text/javascript" src="js/transmissao.js?v=06.01.25"></script>
-
-    <script type="text/javascript">
-        var Leilao = {
-            cod:13938,
-            simbMoeda: 'R$',
-            labelMinimos: 'Valor Inicial',
-            comissao:5,
-			LeilaoSComissao: 0,
-            regraDespOrg:1,
-            loteEmLeilao: '',
-            acompanharEmLeilao: false,
-            participarSemDoc: false,
-            pastaFotos: '//www.milanleiloes.com.br/Fotos/13938/',
-            getLoteEmLeilao: function() {
-	            return $.ajax('/Leiloes/Ajax/LoteEmLeilao.asp', {
-		            dataType: 'json',
-		            data:{CodLeilao:Leilao.cod}
-	            });
-            },
-            getLotesFav: function() {
-                if (!userControl.isLogged) {
-                    return $.when({
-                        erro: 'userNotLogged',
-                        lotesFav: []
-                    });
-                }
-
-                if (Leilao.favoritesLoaded) {
-                    return $.when({
-                        erro: 'favoritesLoaded',
-                        lotesFav:[]
-                    })
-                }
-
-                return $.ajax('api/lotes.asp', {
-                    data: {
-                        CL: Leilao.cod,
-                        func: 'getLotesFav'
-                    },
-                    dataType: 'json'
-                })
-            },
-            favoritesLoaded: false,
-            showOnlyFavorites: false,
-            loadAllLotes: null
-        };
-
-        userControl.isLogged = false;
-        userControl.apelido = '';
-		userControl.status = 0;
-		userControl.condAceita = false;
-        loteAtual.codLeilao = 13938;
-
-        transmissao.codYoutube = '';
-        transmissao.tipo = 1;
-        transmissao.tagContainer = 'divAoVivo';
-	
-
-
-            $(document).ready(function (e) {
-                Leilao.loadAllLotes = loadAllLotes();
-                hashNav.init(monitorarPageHash);
-			
-
-                CarregarLotesAbertos();
-                MensagensLeilao();
-
-                if (sessionStorage.getItem('leilao.showOnlyFavorites') !== null) {
-                    Leilao.showOnlyFavorites = (sessionStorage.getItem('leilao.showOnlyFavorites') == "true" ? true : false);
-                    if (Leilao.showOnlyFavorites) {
-                        filterFavorites('showFav');
-                    }
-                }
-
-                if (userControl.isLogged) {
-                    lance.carregarGrupos();
-                }
-
-                $('#txtLanceLivre').maskMoney({
-                    thousands: '.',
-                    decimal: ',',
-                    allowEmpty: true
-                });
-                $('#txtLanceMax').maskMoney({
-                    thousands: '.',
-                    decimal: ',',
-                    allowEmpty: true
-                });
-
-                mascaraTelefone(document.getElementById('txtFone1'));
-                mascaraTelefone(document.getElementById('txtFone2'));
-                mascaraTelefone(document.getElementById('txtCelular'));
-				
-				
-            });
-			
-function exibirSemTransmissao() {
-	$('#divColCenter').attr('class', '').addClass('col-sm-12 my-auto mx-auto').css('max-width', '900px');
-	$('#divColLogo').attr('class', '').addClass('col-12 myBox');
-	$('#divColLote').attr('class', '').addClass('col-12 myBox');
-	$('div.bg-aoVivo').attr('class', '').hide();
-	$('#divColFotosContainer').attr('class', '').addClass('col-12 myBox');
-	$('#divMsgeLotes').attr('class', '').hide();
-	$('#divValoresDescr').attr('class', '').addClass('col-12 myBox');	
-}
-
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Participe dos melhores leilões de veículos e produtos. Lance agora e aproveite grandes oportunidades!">
+    <meta name="keywords" content="Leilão, Lances, Carros, Veículos, Milan, Leilão de Carros">
+    <meta name="author" content="Milan Leilões">
+    <title>Milan Leilões - Lances em Tempo Real</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-lightgray container">
-   
-	<form id="frmcadastro" name="frmcadastro"  method="post" action="https://clientes.milanleiloes.com.br/" target="_blank">
-	</form>
-    <!-- Modal loginModal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form onsubmit="return false;">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="loginModalLabel">Entre com sua conta</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="txtEmail">E-mail</label>
-                            <input type="email" class="form-control" id="txtEmail" placeholder="Entre com seu e-mail">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtSenha">Senha</label>
-                            <input type="password" class="form-control" id="txtSenha" placeholder="Senha">
-                        </div>
-                        <div class="alert alert-danger" role="alert" id="divLoginResponse">
-                            Usuário ou senha inválidos.
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <!--<button type="button" class="btn btn-link mr-auto">Esqueci minha senha</button>-->
-                        <button type="button" class="btn btn-link mr-auto" onclick="document.getElementById('frmcadastro').submit();">Cadastre-se</button>
-                        <button type="button" class="btn btn-link mr-auto" onclick="javascript:showModalEsqueciSenha()">Esqueceu sua senha?</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="submit" class="btn btn-primary" onclick="doLogin()" id="btnEntrar">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
-                            Entrar
-                        </button>
-                    </div>
-                </form>
-            </div>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="logo-milan.png" alt="Logotipo Milan">
         </div>
-    </div>
-    <!-- Fim modal -->
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Lotes Disponíveis</a></li>
+                <li><a href="#">Como Funciona</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Fale Conosco</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- MODAL ESQUECI MINHA SENHA -->
-    <div class="modal fade" id="ModalEsqueciSenhaLote" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">                
-                <div class="modal-header">
-                    <h5 class="modal-title">Digite seu e-mail abaixo para solicitar uma nova senha</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">                                        
-                    <input class="form-control" autocomplete="off" type="email" id="input_email_esqueci_minha_senha" placeholder="Email">                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                    <button type="button"class="btn btn-primary" id="botao_enviar_esqueci_senha" onclick="enviarEsqueciSenha();">Confirmar</button>
-                </div>                
-            </div>
+    <!-- Banner -->
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Participe dos Melhores Leilões de Veículos e Produtos</h1>
+            <p>Lance agora e aproveite grandes oportunidades!</p>
+            <button class="btn-primary">Lance Agora</button>
         </div>
-    </div>    
-    <!-- FIM MODAL ESQUECI MINHA SENHA -->
-    
-    <!-- Modal Condições de Venda -->
-    <div class="modal fade" id="condVendaModal" tabindex="-1" role="dialog" aria-labelledby="condVendaTit" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="condVendaTit">Condições de venda do leilão</h5>
-                </div>
-                <div class="modal-body">
-                    <iframe style="width:100%; height:350px; border:none;" src="CondVenda.asp?CL=13938"></iframe>
-                </div>
-                <div class="modal-footer">
-                	<div class="small"><strong>Para dar lances no leilão, é necessário ler e aceitar as condições de venda do leilão</strong></div>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Não&nbsp;Aceito</button>
-                    <button type="button" class="btn btn-success" onClick="aceptCondictions()">Aceito</button>
-                </div>
-            </div>
+    </section>
+
+    <!-- Lote 001 -->
+    <section class="lote">
+        <div class="lote-header">
+            <h2>Lote 001: Honda New City Sed. Touring 1.5 Flex 4P</h2>
+            <p><strong>Valor: R$ 57.800,00 + Despesas</strong></p>
         </div>
-    </div>
-    <!-- Fim do mod Cond venda -->
-
-    <!-- Modal Documentos -->
-    <div class="modal fade" id="docLoteModal" tabindex="-1" role="dialog" aria-labelledby="docLoteTit" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="docLoteTit">Documento do lote</h5>
-                </div>
-                <div class="modal-body">
-                    <iframe style="width:100%; height:350px; border:none;" src=""></iframe>
-                </div>
-                <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                </div>
-            </div>
+        <div class="lote-info">
+            <h3>Descrição do Lote</h3>
+            <ul>
+                <li><strong>Modelo:</strong> Honda New City Sed. Touring 1.5 Flex 4P</li>
+                <li><strong>Ano:</strong> 2023</li>
+                <li><strong>Quilometragem:</strong> 16.541 km</li>
+                <li><strong>Transmissão:</strong> Automático</li>
+                <li><strong>Placa Final:</strong> 0</li>
+                <li><strong>Comodidades:</strong> Ar condicionado, direção elétrica, sistema de som</li>
+                <li><strong>Documentação:</strong> IPVA 2025 pago, Licenciamento e DPVAT por conta do comprador</li>
+            </ul>
+            <p><strong>Comitente:</strong> Banco Honda</p>
         </div>
-    </div>
-    <!-- Fim do mod Documentos -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="loginSenhaModal" tabindex="-1" role="dialog" aria-labelledby="loginSenhaModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form onsubmit="return false;">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="loginSenhaModalLabel">Sua senha precisa ser trocada</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="font-weight-bold">Sua senha está correta, mas expirou. Você precisa escolher uma nova senha.</div>
-                        <div class="form-group">
-                            <label for="txtEmail">Nova Senha</label>
-                            <input type="password" class="form-control" id="txtSenhaNova" placeholder="Entre com uma nova senha">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtSenha">Senha</label>
-                            <input type="password" class="form-control" id="txtSenhaNova2" placeholder="Confirme a nova senha">
-                        </div>
-                        <div class="alert alert-danger" role="alert" id="divLoginSenhaResponse">
-                            As senhas não batem.
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-link mr-auto" onclick="showRegrasSenha()">REGRAS PARA CADASTRO DE SENHA</button>
-                        <button type="submit" class="btn btn-primary" onclick="doTrocarSenha()" id="btnTrocarSenha">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
-                            Trocar Senha
-                        </button>
-                    </div>
-                    <div class="modal-footer">
-                            <ul style="font-size:80%; display:none;" id="ulRegrasSenha">
-                              <li> A senha deve ter <strong>tamanho  m&iacute;nimo de 6</strong> caracteres  e no  m&aacute;ximo 20 caracteres.</li>
-                              <li> Todos os caracteres s&atilde;o permitidos: Letras, N&uacute;meros, Simbolos e espa&ccedil;o.<br />
-                              </li>
-                              <li>A senha deve conter <strong>pelo menos uma letra</strong> e <strong>pelo menos um n&uacute;mero</strong>.<br />
-                              </li>
-                              <li>N&atilde;o s&atilde;o aceitas <strong>sequencias de 3 ou mais</strong> caracteres de: * n&uacute;meros (ex: 123, 456, 567), * letras (ex: abc, cde, pqr) e * teclado (qwe, asd, zxc)</li>
-                              <li>N&atilde;o &eacute; obrigat&oacute;rio, mas <strong>&eacute; recomend&aacute;vel </strong>o uso de algum s&iacute;mbolo (&quot;#&quot;, &quot;$&quot;, &quot;.&quot;, etc) e varia&ccedil;&otilde;es entre letras mai&uacute;sculas e min&uacute;sculas (SEnhA).</li>
-                            </ul>
-                    </div>
-                </form>
+        <div class="lance">
+            <h3>Lances Recentes</h3>
+            <p><strong>Último Lance:</strong> R$ 58.000,00 por T Rex</p>
+            <div class="timer">
+                <p><strong>Tempo restante:</strong> <span id="timer">02h 35m</span></p>
             </div>
+            <button class="btn-primary">Dar Lance</button>
         </div>
-    </div>
-    <!-- Fim modal -->
+    </section>
 
-    <!-- Modal -->
-    <div class="modal fade" id="confirmTelModal" tabindex="-1" role="dialog" aria-labelledby="confirmTelModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form onsubmit="return false;">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="confirmTelModalLabel">Atualize ou confirme seus telefones</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group row">
-                            <label for="txtDDD" class="col-6 col-form-label">DDD</label>
-                            <div class="col-6">
-                                <input type="text" maxlength="2" class="form-control" id="txtDDD" placeholder="DDD">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="txtFone1" class="col-6 col-form-label">Tel. Residencial</label>
-                            <div class="col-6">
-                                <input type="text" maxlength="15" class="form-control" id="txtFone1" placeholder="Residencial">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="txtFone2" class="col-6 col-form-label">Tel. Comercial</label>
-                            <div class="col-6">
-                                <input type="text" maxlength="15" class="form-control" id="txtFone2" placeholder="Comercial">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="txtCelular" class="col-6 col-form-label">Celular</label>
-                            <div class="col-6">
-                                <input type="text" maxlength="15" class="form-control" id="txtCelular" placeholder="Celular">
-                            </div>
-                        </div>
-                        <div class="alert alert-danger" role="alert" id="divTelefonesResponse" style="display:none;">
-                            .
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" onclick="doAtualizarTelefone('A')" id="btnTrocarTelefones">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
-                            Atualizar
-                        </button>
-                        <button type="submit" class="btn btn-primary" onclick="doAtualizarTelefone('C')" id="btnConfirmarTelefones">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
-                            Confirmar
-                        </button>
-                    </div>
-                </form>
+    <!-- Como Funciona -->
+    <section class="como-funciona">
+        <h2>Como Funciona</h2>
+        <ul>
+            <li><strong>Cadastro:</strong> Faça seu cadastro para começar a participar.</li>
+            <li><strong>Escolha o Lote:</strong> Selecione o lote que deseja arrematar.</li>
+            <li><strong>Dê o Lance:</strong> Faça seus lances no lote selecionado.</li>
+            <li><strong>Acompanhe:</strong> Receba notificações e atualizações sobre o andamento do leilão.</li>
+            <li><strong>Fechamento e Pagamento:</strong> Após o leilão, o vencedor será contatado para o pagamento.</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <ul>
+                <li><a href="#">Política de Privacidade</a></li>
+                <li><a href="#">Termos e Condições</a></li>
+                <li><a href="#">Fale Conosco</a></li>
+                <li><a href="#">Sobre Nós</a></li>
+            </ul>
+            <div class="social">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
             </div>
+            <p>© 2025 Milan Leilões | Todos os direitos reservados</p>
         </div>
-    </div>
-    <!-- Fim modal -->
+    </footer>
 
-    <!-- Modal Despesa -->
-    <div id="modalDespesas" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Despesas do lote</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table class="table-sm w-100">
-                        <tr>
-                            <th>Valor do lote:</th>
-                            <td class="text-right"><span id="despesas_valorLote"></span></td>
-                        </tr>
-                        <tr>
-                            <th>Comissão:</th>
-                            <td class="text-right"><span id="despesas_comissao"></span></td>
-                        </tr>
-                        <tr>
-                            <th>Despesas Adm.:</th>
-                            <td class="text-right"><span id="despesas_despAdmin"></span></td>
-                        </tr>
-                        <tr id="despesas_despRemocao">
-                            <th>Despesa Remoção:</th>
-                            <td class="text-right"><span></span></td>
-                        </tr>
-                        <tr id="despesas_despAssessoria">
-                            <th>Despesas Asses./Log.:</th>
-                            <td class="text-right"><span></span></td>
-                        </tr>
-                        <tr id="despesas_despExtras">
-                            <th>Outras despesas:</th>
-                            <td class="text-right"><span></span></td>
-                        </tr>
-                        <tr class="table-secondary">
-                            <th>Total do lote:</th>
-                            <td class="text-right">*<span id="despesas_valorTotal"></span></td>
-                        </tr>
-                    </table>
-                    <div class="small">*Devem ser consideradas outras despesas ou valores que estejam especificadas na descrição do lote ou na condição de venda, caso existam</div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Fim Modal -->
-
-    <!-- Modal Confirmar Valor -->
-    <div id="modalConfirmarValor" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Confirmar valor</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="ConfirmarValor()" id="btnConfirmarValor">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
-                        Confirmar
-                    </button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Fim Modal -->
-
-    <!-- Modal Alerta -->
-    <div id="modalAlert" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Resposta</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Fim Modal -->
-	
-    <div class="row h-100 py-1"> <!-- begin:row to center -->
-        <div class="col-sm-12 my-auto" id="divColCenter"> <!-- begin:col to center -->
-    
-    <div class="row no-gutters bg-lightgray">
-    	<div class="col-lg-6 col-md-12 myBox" id="divColLogo">
-        	<div class="row no-gutters align-items-center" id="divLogoWrapper">
-                <div class="col-6 mx-auto">
-                    <img src="img/logo.jpg" height="46" alt="Logotipo Milan" />
-                </div>
-                <div class="col-6 mx-auto text-right  bg-white"><span class="align-middle font-weight-bold pr-1" id="lblApelido"></span></div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-12 myBox" id="divColLote">
-        	<div class="row no-gutters" id="divLoteNavigator">
-            	<div class="col-md-6 col-12 order-md-1 order-2 p-1 align-self-center text-center" id="divSituacao">
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    <span id="textoSituacao"></span><span id="infoTempoLote" class="badge badge-dark ml-2" style="display: none"></span>
-                </div>
-                <div class="col-md-6 col-12 order-md-2 order-1 p-1">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary html-symbol" onClick="irLote('prev')" type="button">
-                            <svg style="height: 20px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-left" class="svg-inline--fa fa-caret-left fa-w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"><path fill="currentColor" d="M192 127.338v257.324c0 17.818-21.543 26.741-34.142 14.142L29.196 270.142c-7.81-7.81-7.81-20.474 0-28.284l128.662-128.662c12.599-12.6 34.142-3.676 34.142 14.142z"></path></svg>
-                            </button>
-                        </div>
-                        <select id="selLotes" name="D1" class="custom-select" onchange="irLote()">
-                            
-                        </select>
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary html-symbol" onClick="irLote('next')" type="button">
-                            <svg style="height: 20px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-right" class="svg-inline--fa fa-caret-right fa-w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"><path fill="currentColor" d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg>
-                            </button>
-                            <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="javascript:irLoteLeilao()">Lote em leilão</a>
-                                <a class="dropdown-item" id="linkFilterFav" href="javascript:filterFavorites()">Somente Favoritos</a>
-                            </div>
-                            
-                        </div>
-                    
-                    </div>
-                    
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    
-
-    <div class="row no-gutters bg-lightgray">
-    	<div class="col-md-6 col-sm-12 myBox bg-aoVivo">
-        	<div id="divAoVivo" class="m-auto">
-            	
-            </div>
-        </div>
-        
-        <div class="col-md-6 col-sm-12 myBox" id="divColFotosContainer">
-            <div id="divFotosContainer">
-                           
-            </div>
-        </div>
-	</div>
-
-    <div class="row no-gutters bg-lightgray">
-    	<div class="col-lg-6 col-md-12 order-lg-1 order-2 myBox" id="divMsgeLotes">
-            <div id="divChatWrapper" class="row no-gutters">
-                <div class="col-md-7 col-12 pl-2">
-                    <h5>Mensagens do Leilão</h5>                    
-                    <div style="font-size: 16px; font-weight: bold;" class="mb-1"><span class="badge badge-primary">Lote</span> Mensagem</div>                    
-                    <div class="overflow-auto mb-2">
-                        <div id="divMsgLeilao">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5 col-12">
-                    <h5>Lotes disponíveis</h5>
-                    <div class="overflow-auto mb-2">
-                        <ul id="listLotesAbertos" class="list-inline">
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    	<div class="col-lg-6 col-md-12 order-lg-2 order-1 myBox" id="divValoresDescr">
-        <!------------------------------------------------------>
-            <div class="row no-gutters" style="min-height:238px;">
-                <div class="col-md-6 col-12 p-1">
-                    <input type="hidden" class="form-control" id="tipo_lote" name="tipo_lote">
-
-                    <div id="divTituloLote" class="bg-white"></div>
-                    <div id="divValorLote" class="bg-white border-dark py-2 my-1 border-top border-bottom">
-                        <span id="spanValorLote" class="h4 corValorLote">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        </span><span id="spanPorUnid" class="corValorLote"></span>
-                        <a href="#" onclick="showDespesas(); return false;" class="small float-right font-weight-bold text-danger">+Despesas</a>
-                        <span id="spanLabelValorLote" class="small d-block">-</span>
-                    </div>
-                    <div id="divItensDestaque" class="bg-white clearfix">
-                        
-                    </div>
-                    <div id="divComitenteLogo" class="row">
-                        <div class="col-6 align-self-end">COMITENTE:</div>
-                        <div class="col-6 text-right">            
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    <div class="docsLote" style="height:40px;"></div>
-                    <div class="row gutters-5 docsLote" style="position:absolute; bottom: 0px; width: 100%;">
-                        <div class="col-12 p-1 text-right">
-                        	<div class="btn-group dropup">
-                              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DOCUMENTOS
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-                </div>
-                <div class="col-md-6 col-12 p-1" style="min-height:238px;">                   
-                    <div id="divQuadroDescricao" class="quadro-opcao">
-                        <div id="divDescricaoTitulo">DESCRIÇÃO</div>
-                        <div id="divDescricaoTexto" class="overflow-auto">
-                        </div>
-                    </div>
-                    <div id="divQuadroConfirmarValor" class="quadro-opcao" style="display: none;">
-                        <div class="alert alert-secondary" role="alert">
-                            <span></span>
-                            <hr class="my-2">
-                            <button type="button" class="btn btn-primary" onclick="showConfirmarValor()">Confirmar</button>
-                            <button type="button" class="btn btn-secondary" onclick="showDescricao()">Cancelar</button>
-                        </div>
-                    </div>
-                    <div id="divQuadroLoteFechado" class="quadro-opcao" style="display: none;min-height:160px;">
-                        <div class="alert alert-light" role="alert">
-                            <div>Lote já fechado</div>
-                            <hr class="my-2">
-                            <button type="button" class="btn btn-primary" onclick="showDescricao()">OK</button>
-                        </div>
-                    </div>
-                    <div id="divQuadroDocFaltando" class="quadro-opcao" style="display: none;min-height:160px;">
-                        <div class="alert alert-light" role="alert">
-                            <div>Para participar desse leilão, você precisa completar seu cadastro enviando a documentação</div>
-                            <hr class="my-2">
-                            <button type="button" class="btn btn-primary" onclick="showDescricao()">OK</button>
-                        </div>
-                    </div>
-                    <div id="divQuadroLances" class="quadro-opcao" style="display: none;">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#lance-facil" data-toggle="tab" role="tab" aria-controls="lance-facil" aria-selected="true">Fácil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#lance-livre" data-toggle="tab" role="tab" aria-controls="lance-livre" aria-selected="false">Livre</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#lance-programado" data-toggle="tab" role="tab" aria-controls="lance-programado" aria-selected="false">Programado</a>
-                            </li>
-                            <li class="nav-item" style="display: none;">
-                                <a class="nav-link" href="#lance-info" data-toggle="tab" role="tab" aria-controls="lance-info" aria-selected="false">Info</a>
-                            </li>
-                            <li class="nav-item" style="display: none;">
-                                <a class="nav-link" href="#lance-confirmar" data-toggle="tab" role="tab" aria-controls="lance-confirmar" aria-selected="false">Confirma</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="lance-facil" role="tabpanel" aria-labelledby="lance-facil-tab">
-                                <div class="container">
-                                    <div class="row no-gutters">
-                                        <div class="col-6 p-1">
-                                            <button value="0" class="btn btn-link btn-block font-weight-bold lance">0,00</button>
-                                        </div>
-                                        <div class="col-6 p-1">
-                                            <button value="0" class="btn btn-link btn-block lance">0,00</button>
-                                        </div>
-                                    </div>
-                                    <div class="row no-gutters">
-                                        <div class="col-6 p-1">
-                                            <button value="0" class="btn btn-link btn-block lance">0,00</button>
-                                        </div>
-                                        <div class="col-6 p-1">
-                                            <button value="0" class="btn btn-link btn-block lance">0,00</button>
-                                        </div>
-                                    </div>
-                                    <div class="row no-gutters">
-                                        <div class="col-6 p-1">
-                                            <button value="0" class="btn btn-link btn-block lance">0,00</button>
-                                        </div>
-                                        <div class="col-6 p-1">
-                                            <button class="btn btn-outline-primary btn-block" onclick="lanceFacil.recarregar(loteAtual.getValorAtual().proximoLance, loteAtual.incremento)">Recarregar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="lance-livre" role="tabpanel" aria-labelledby="lance-livre-tab">
-                                <form onsubmit="return false;">
-                                    <div class="form-group row mt-2">
-                                        <label for="txtLanceLivre" class="col-sm-3 col-form-label" style="font-size: 80%;">Valor:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control form-control-sm" id="txtLanceLivre" aria-describedby="lanceLivreHelp">
-                                            <small id="lanceLivreHelp" class="form-text text-muted">Valor mínimo para o lance:<br>
-                                                <span class="font-weight-bold" id="spanMinimoLance"></span></small>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-3"></div>
-                                        <div class="col-sm-9">
-                                            <button type="submit" class="btn btn-primary btn-sm" onclick="enviarLance()">Enviar</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane fade" id="lance-programado" role="tabpanel" aria-labelledby="lance-programado-tab">
-                                <form onsubmit="return false;" id="formLanceProgramado">
-                                    <div class="form-group row pt-2">
-                                        <label for="txtLanceMax" class="col-sm-3 col-form-label text-nowrap" style="font-size: 80%;">Valor Max.:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control form-control-sm" id="txtLanceMax">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="selGrupo" class="col-sm-3 col-form-label" style="font-size: 80%;">Agrupar:</label>
-                                        <div class="col-sm-9">
-                                            <select id="selGrupo" class="custom-select custom-select-sm">
-                                                <option value="0">Não Agrupar</option>
-                                                <option value="1">001, 002</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm">
-                                            <button type="submit" id="btnProgramaLance" class="btn btn-primary btn-sm">Programar</button>
-                                        </div>
-                                    </div>
-
-                                </form>
-                                <div class="py-3" id="divExibirLanceProgramado" style="display: none; font-size: 80%;">
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            Valor máximo programado: <span id="spanLanceMax" class="font-weight-bold"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            Agrupado com:<span id="spanGrupo" class="font-weight-bold"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            <button type="submit" id="btnAlterarProgramaLance" class="btn btn-primary btn-sm">Alterar</button>
-                                            <button type="button" id="btnRemoverProgramacao" class="btn btn-secondary btn-sm" onclick="removerProgramacao()">Remover</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="tab-pane fade" id="lance-info" role="tabpanel" aria-labelledby="lance-info-tab">
-                                <div class="alert alert-secondary" role="alert">
-                                    <span></span>
-                                    <hr class="my-2">
-                                    <button type="button" class="btn btn-primary">OK</button>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="lance-confirmar" role="tabpanel" aria-labelledby="lance-confirmar-tab">
-                                <div class="alert alert-secondary" role="alert">
-                                    <span></span>
-                                    <hr class="my-2">
-                                    <button type="button" class="btn btn-primary">OK</button>
-                                    <button type="button" class="btn btn-secondary">Cancelar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="alert-warning text-center small" id="divObsLanceUnid" style="display:none;">Atenção: lance por <span class="font-weight-bold"></span></div>
-                    </div>
-
-                    <div style="height:40px;"></div>
-                    <div id="divControles" class="row gutters-5" style="position:absolute; bottom: 0px; width: 100%;">
-                        <div class="col-6 p-1">
-                            <button class="btn btn-success btn-block darLance" data-showing="desc" onclick="showLancesDescricao()" id="btnShowLanceDesc">DAR&nbsp;LANCE</button></div>
-                        <div class="col-6 p-1">
-                            <div class="share-buttons-container" style="display:none;">
-                                <button type="button" class="btn btn-default btn-circle btn-xl" onclick="share('fb')"><img src="img/social/facebook-f-brands.svg" style="height: 100%;" /></button>
-                                <button type="button" class="btn btn-default btn-circle btn-xl" onclick="share('li')"><img src="img/social/linkedin-in-brands.svg" /></button>
-                                <button type="button" class="btn btn-default btn-circle btn-xl" onclick="share('tw')"><img src="img/social/twitter-brands.svg" /></button>
-                                <button type="button" class="btn btn-default btn-circle btn-xl" onclick="share('wa')"><img src="img/social/whatsapp-brands.svg" /></button>
-                                <button type="button" class="btn btn-default btn-circle btn-xl" onclick="share('pi')"><img src="img/social/pinterest-brands.svg" /></button>
-                            </div>
-                            <button id="btnIndique" class="btn btn-secondary btn-block" onclick="showSocialShare()">INDIQUE</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-<!-------------------------------------------------->
-        </div>
-	</div>
-
-        </div> <!-- end:col to center -->
-	</div> <!-- end:row to center -->
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
 
 </html>
