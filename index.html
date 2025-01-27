@@ -2,174 +2,194 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Promoção imperdível de 3 Pods por R$99,90! Aproveite agora!">
-  <meta name="keywords" content="promoção, pods, 3 por 99, oferta, descontos">
-  <title>Promoção Imperdível - 3 Pods por R$99,90 | KN5 Store</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Adicionando estilos para o layout */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulação de pagamento via Pix e retorno de valor dobrado.">
+    <meta name="keywords" content="simulação, pagamento, Pix, educação, negócio, dobrou o valor">
+    <title>Simulação de Pagamento via Pix - Valor Dobrado | KN5 Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
 
-    header {
-      background-color: #333;
-      color: white;
-      padding: 15px 0;
-      text-align: center;
-      font-size: 1.8em;
-    }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 2rem;
+        }
 
-    .promo-section {
-      background-color: #f5f5f5;
-      text-align: center;
-      padding: 50px 20px;
-      margin: 20px 0;
-    }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
 
-    .promo-section h2 {
-      font-size: 2.5rem;
-      color: #222;
-      margin-bottom: 20px;
-    }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-    .promo-section p {
-      font-size: 1.2rem;
-      color: #555;
-      margin-bottom: 30px;
-    }
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #666;
+        }
 
-    .promo-price {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #e74c3c;
-      margin-bottom: 20px;
-    }
+        .input-section {
+            margin-bottom: 30px;
+        }
 
-    .btn {
-      background-color: #f5a623;
-      color: white;
-      padding: 15px 25px;
-      text-transform: uppercase;
-      font-weight: bold;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
+        .input-section input {
+            padding: 12px;
+            font-size: 1.2rem;
+            width: 100%;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
 
-    .btn:hover {
-      background-color: #d88f18;
-    }
+        .input-section input:focus {
+            border-color: #4CAF50;
+        }
 
-    .product-cards {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
-    }
+        .input-section button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
 
-    .product-card {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 250px;
-    }
+        .input-section button:hover {
+            background-color: #45a049;
+        }
 
-    .product-card img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
+        .result-section {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
 
-    .product-card h3 {
-      font-size: 1.5rem;
-      color: #333;
-      margin-bottom: 10px;
-    }
+        .result-section h3 {
+            font-size: 1.8rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
 
-    .product-card p {
-      font-size: 1rem;
-      color: #777;
-      margin-bottom: 10px;
-    }
+        .result-section p {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+        }
 
-    .product-card .price {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #e74c3c;
-    }
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            margin-top: 40px;
+        }
 
-    footer {
-      background-color: #222;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
+        footer p {
+            margin: 0;
+        }
 
-    @media (max-width: 768px) {
-      .product-cards {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+        .alert {
+            background-color: #f1c40f;
+            color: #333;
+            padding: 10px;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .input-section button {
+                width: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- Cabeçalho -->
-  <header>
-    <h1>KN5 Store</h1>
-    <p>Ofertas Exclusivas de Produtos de Luxo</p>
-  </header>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Simulação de Pagamento via Pix - Valor Dobrado</h1>
+    </header>
 
-  <!-- Seção de Promoção -->
-  <section class="promo-section">
-    <h2>Promoção Imperdível: 3 Pods por R$99,90!</h2>
-    <p>Compre 3 unidades do nosso pod incrível por apenas R$99,90. Aproveite essa oferta por tempo limitado e tenha um
-      produto de qualidade por um preço especial!</p>
-    <p class="promo-price">R$99,90</p>
-    <a href="#contato" class="btn">Aproveitar Agora</a>
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <h2>Simule um pagamento e veja o valor "dobrado" na hora!</h2>
+        <p>Insira o valor que você deseja pagar para simular o "dobro". Isso é uma simulação para fins educacionais. Não é uma transação real!</p>
 
-    <!-- Cards de Produtos -->
-    <div class="product-cards">
-      <div class="product-card">
-        <img src="pod1.jpg" alt="Pod 1">
-        <h3>Pod Incrível 1</h3>
-        <p>O pod perfeito para quem busca qualidade e inovação.</p>
-        <p class="price">R$39,90</p>
-      </div>
+        <!-- Alerta explicativo -->
+        <div class="alert">
+            <strong>Atenção:</strong> Este é um exercício educacional de simulação! O valor inserido será "dobrado" como parte da experiência de aprendizado.
+        </div>
 
-      <div class="product-card">
-        <img src="pod2.jpg" alt="Pod 2">
-        <h3>Pod Incrível 2</h3>
-        <p>Design moderno e tecnologia de ponta para o seu conforto.</p>
-        <p class="price">R$39,90</p>
-      </div>
+        <!-- Formulário de simulação -->
+        <div class="input-section">
+            <label for="valor">Valor a ser pago (R$):</label>
+            <input type="number" id="valor" placeholder="Digite o valor que deseja simular" />
+            <button onclick="simularPagamento()">Simular Pagamento</button>
+        </div>
 
-      <div class="product-card">
-        <img src="pod3.jpg" alt="Pod 3">
-        <h3>Pod Incrível 3</h3>
-        <p>O pod que você precisa para uma experiência única.</p>
-        <p class="price">R$39,90</p>
-      </div>
+        <!-- Resultado da simulação -->
+        <div class="result-section" id="resultSection">
+            <h3>Resultado da Simulação</h3>
+            <p>O valor simulado após "dobrar" é:</p>
+            <p id="valorDobrado" style="color: #e74c3c;"></p>
+        </div>
     </div>
-  </section>
 
-  <!-- Rodapé -->
-  <footer>
-    <p>&copy; 2025 KN5 Store. Todos os direitos reservados.</p>
-  </footer>
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 - KN5 Store. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script para simular o pagamento -->
+    <script>
+        function simularPagamento() {
+            // Pegar o valor do input
+            var valor = document.getElementById('valor').value;
+
+            // Verificar se o valor é válido
+            if (valor <= 0 || isNaN(valor)) {
+                alert('Por favor, insira um valor válido para a simulação!');
+                return;
+            }
+
+            // Calcular o valor dobrado
+            var valorDobrado = valor * 2;
+
+            // Mostrar o resultado
+            document.getElementById('valorDobrado').innerText = 'R$' + valorDobrado.toFixed(2);
+            document.getElementById('resultSection').style.display = 'block';
+        }
+    </script>
 
 </body>
 
