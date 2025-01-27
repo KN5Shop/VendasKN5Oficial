@@ -8,88 +8,279 @@
     <meta name="keywords" content="Leilão, Lances, Carros, Veículos, KN5 Store, Leilão de Carros">
     <meta name="author" content="KN5 Store">
     <title>KN5 Store - Leilão de Carros</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Externalizando o CSS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> <!-- Modernizr para detectar recursos -->
-    <script>
-        // Função para contagem regressiva do leilão
-        function startTimer(duration, display) {
-            var timer = duration, hours, minutes;
-            setInterval(function () {
-                hours = parseInt(timer / 3600, 10);
-                minutes = parseInt((timer % 3600) / 60, 10);
-
-                display.textContent = hours + "h " + minutes + "m";
-                if (--timer < 0) {
-                    timer = duration;
-                }
-            }, 1000);
+    <style>
+        /* Reset e estilo base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        window.onload = function () {
-            var auctionTime = 2 * 60 * 60, // 2 horas em segundos
-                display = document.querySelector('#timer');
-            startTimer(auctionTime, display);
-        };
-    </script>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #141414;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .banner {
+            background-color: #1f1f1f;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .banner h1 {
+            font-size: 60px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .banner p {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+        }
+
+        .btn-primary {
+            padding: 16px 36px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 20px;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .lote {
+            background-color: #222222;
+            padding: 50px;
+            border-radius: 12px;
+            margin-top: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .lote-header h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #e74c3c;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .lote-header p {
+            font-size: 22px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .lote-info ul {
+            list-style: none;
+            font-size: 20px;
+            margin: 20px 0;
+            text-align: left;
+            color: #ecf0f1;
+        }
+
+        .lote-info li {
+            margin-bottom: 12px;
+        }
+
+        .lote-info li strong {
+            color: #e74c3c;
+        }
+
+        .lote-image {
+            max-width: 80%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border: 3px solid #e74c3c;
+        }
+
+        .lance {
+            margin-top: 30px;
+        }
+
+        .lance .timer {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #f39c12;
+        }
+
+        .como-funciona {
+            background-color: #222222;
+            padding: 50px;
+            margin-top: 60px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .como-funciona h2 {
+            font-size: 40px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .como-funciona ul {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            font-size: 20px;
+            color: #ecf0f1;
+            text-align: left;
+        }
+
+        .como-funciona li {
+            margin-bottom: 12px;
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            padding: 20px;
+            margin-top: 80px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        footer ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        footer ul li a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: #c0392b;
+        }
+
+        footer p {
+            font-size: 18px;
+            color: #95a5a6;
+        }
+
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 45px;
+            }
+
+            .banner p {
+                font-size: 18px;
+            }
+
+            .btn-primary {
+                font-size: 18px;
+            }
+
+            .como-funciona ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <!-- Header -->
-        <header>
-            <section class="banner">
-                <div class="banner-content">
-                    <h1>Participe dos Melhores Leilões de Veículos e Produtos</h1>
-                    <p>Lance agora e aproveite grandes oportunidades!</p>
-                    <a href="https://link.mercadopago.com.br/fghchjjjfg" class="btn-primary" target="_blank">Lance Agora</a>
-                </div>
-            </section>
-        </header>
+        <!-- Banner -->
+        <section class="banner">
+            <div class="banner-content">
+                <h1>Participe dos Melhores Leilões de Veículos e Produtos</h1>
+                <p>Lance agora e aproveite grandes oportunidades!</p>
+                <a href="https://link.mercadopago.com.br/fghchjjjfg" class="btn-primary" target="_blank">Lance Agora</a>
+            </div>
+        </section>
 
-        <!-- Main Content -->
-        <main>
-            <!-- Lote 001 -->
-            <section class="lote">
-                <div class="lote-header">
-                    <h2>Lote 001: Honda New City Sed. Touring 1.5 Flex 4P</h2>
-                    <img src="imagens/1.png" alt="Honda New City Sed. Touring 1.5 Flex 4P" class="lote-image">
-                    <p><strong>Valor: R$ 57.800,00 + Despesas</strong></p>
-                </div>
-                <div class="lote-info">
-                    <h3>Descrição do Lote</h3>
-                    <ul>
-                        <li><strong>Modelo:</strong> Honda New City Sed. Touring 1.5 Flex 4P</li>
-                        <li><strong>Ano:</strong> 2023</li>
-                        <li><strong>Quilometragem:</strong> 16.541 km</li>
-                        <li><strong>Transmissão:</strong> Automático</li>
-                        <li><strong>Placa Final:</strong> 0</li>
-                        <li><strong>Comodidades:</strong> Ar condicionado, direção elétrica, sistema de som</li>
-                        <li><strong>Documentação:</strong> IPVA 2025 pago, Licenciamento e DPVAT por conta do comprador</li>
-                    </ul>
-                    <p><strong>Comitente:</strong> Banco Honda</p>
-                </div>
-                <div class="lance">
-                    <h3>Lances Recentes</h3>
-                    <p><strong>Último Lance:</strong> R$ 500,00 por André</p>
-                    <div class="timer">
-                        <p><strong>Tempo restante:</strong> <span id="timer">02h 35m</span></p>
-                    </div>
-                    <a href="https://link.mercadopago.com.br/fghchjjjfg" class="btn-primary" target="_blank">Dar Lance</a>
-                </div>
-            </section>
-
-            <!-- Como Funciona -->
-            <section class="como-funciona">
-                <h2>Como Funciona</h2>
+        <!-- Lote 001 -->
+        <section class="lote">
+            <div class="lote-header">
+                <h2>Lote 001: Honda New City Sed. Touring 1.5 Flex 4P</h2>
+                <img src="imagens/1.png" alt="Honda New City Sed. Touring 1.5 Flex 4P" class="lote-image">
+                <p><strong>Valor: R$ 57.800,00 + Despesas</strong></p>
+            </div>
+            <div class="lote-info">
+                <h3>Descrição do Lote</h3>
                 <ul>
-                    <li><strong>Cadastro:</strong> Faça seu cadastro para começar a participar.</li>
-                    <li><strong>Escolha o Lote:</strong> Selecione o lote que deseja arrematar.</li>
-                    <li><strong>Dê o Lance:</strong> Faça seus lances no lote selecionado.</li>
-                    <li><strong>Acompanhe:</strong> Receba notificações e atualizações sobre o andamento do leilão.</li>
-                    <li><strong>Fechamento e Pagamento:</strong> Após o leilão, o vencedor será contatado para o pagamento.</li>
+                    <li><strong>Modelo:</strong> Honda New City Sed. Touring 1.5 Flex 4P</li>
+                    <li><strong>Ano:</strong> 2023</li>
+                    <li><strong>Quilometragem:</strong> 16.541 km</li>
+                    <li><strong>Transmissão:</strong> Automático</li>
+                    <li><strong>Placa Final:</strong> 0</li>
+                    <li><strong>Comodidades:</strong> Ar condicionado, direção elétrica, sistema de som</li>
+                    <li><strong>Documentação:</strong> IPVA 2025 pago, Licenciamento e DPVAT por conta do comprador</li>
                 </ul>
-            </section>
-        </main>
+                <p><strong>Comitente:</strong> Banco Honda</p>
+            </div>
+            <div class="lance">
+                <h3>Lances Recentes</h3>
+                <p><strong>Último Lance:</strong> R$ 500,00 por André</p>
+                <div class="timer">
+                    <p><strong>Tempo restante:</strong> <span id="timer">24h 00m</span></p>
+                </div>
+                <a href="https://link.mercadopago.com.br/fghchjjjfg" class="btn-primary" target="_blank">Dar Lance</a>
+            </div>
+        </section>
+
+        <!-- Como Funciona -->
+        <section class="como-funciona">
+            <h2>Como Funciona</h2>
+            <ul>
+                <li><strong>Cadastro:</strong> Faça seu cadastro para começar a participar.</li>
+                <li><strong>Escolha o Lote:</strong> Selecione o lote que deseja arrematar.</li>
+                <li><strong>Dê o Lance:</strong> Faça seus lances no lote selecionado.</li>
+                <li><strong>Acompanhe:</strong> Receba notificações e atualizações sobre o andamento do leilão.</li>
+                <li><strong>Fechamento e Pagamento:</strong> Após o leilão, o vencedor será contatado para o pagamento.</li>
+            </ul>
+        </section>
 
         <!-- Footer -->
         <footer>
@@ -105,6 +296,46 @@
         </footer>
     </div>
 
+    <script>
+        // Função para calcular e atualizar o timer ao vivo
+        function startCountdown() {
+            const startTime = localStorage.getItem("startTime");
+
+            // Se o horário de início não foi salvo, define o momento atual como o horário de início
+            if (!startTime) {
+                const newStartTime = new Date().getTime();
+                localStorage.setItem("startTime", newStartTime);
+            }
+
+            // Obtém o horário de início salvo no localStorage
+            const endDate = parseInt(localStorage.getItem("startTime")) + (24 * 60 * 60 * 1000); // 24 horas
+
+            const timerElement = document.getElementById("timer");
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const timeRemaining = endDate - now;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    timerElement.textContent = "Leilão Finalizado!";
+                    return;
+                }
+
+                const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                timerElement.textContent = `${hours}h ${minutes}m ${seconds}s`;
+            }
+
+            updateTimer(); // Atualiza imediatamente
+            const timerInterval = setInterval(updateTimer, 1000); // Atualiza a cada segundo
+        }
+
+        // Inicia a contagem regressiva assim que a página carrega
+        window.onload = startCountdown;
+    </script>
 </body>
 
 </html>
