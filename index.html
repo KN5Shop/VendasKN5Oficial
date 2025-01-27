@@ -21,6 +21,16 @@
             font-family: 'Arial', sans-serif;
             background-color: #2c3e50;
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
         }
 
         header {
@@ -76,6 +86,7 @@
             margin: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            text-align: center;
         }
 
         .lote-header h2 {
@@ -89,7 +100,7 @@
         }
 
         .lote-header img {
-            max-width: 100%;
+            max-width: 80%;
             height: auto;
             margin-bottom: 20px;
         }
@@ -110,7 +121,6 @@
 
         .lance {
             margin-top: 30px;
-            text-align: center;
         }
 
         .lance .timer {
@@ -123,10 +133,10 @@
             background-color: #34495e;
             padding: 30px;
             margin-top: 50px;
+            text-align: center;
         }
 
         .como-funciona h2 {
-            text-align: center;
             margin-bottom: 30px;
         }
 
@@ -192,77 +202,79 @@
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="imagens/1.png" alt="Logotipo KN5 Store">
-        </div>
-    </header>
-
-    <!-- Banner -->
-    <section class="banner">
-        <div class="banner-content">
-            <h1>Participe dos Melhores Leilões de Veículos e Produtos</h1>
-            <p>Lance agora e aproveite grandes oportunidades!</p>
-            <button class="btn-primary">Lance Agora</button>
-        </div>
-    </section>
-
-    <!-- Lote 001 -->
-    <section class="lote">
-        <div class="lote-header">
-            <h2>Lote 001: Honda New City Sed. Touring 1.5 Flex 4P</h2>
-            <!-- Imagem do veículo no lote -->
-            <img src="imagens/1.png" alt="Honda New City Sed. Touring 1.5 Flex 4P" class="lote-image">
-            <p><strong>Valor: R$ 57.800,00 + Despesas</strong></p>
-        </div>
-        <div class="lote-info">
-            <h3>Descrição do Lote</h3>
-            <ul>
-                <li><strong>Modelo:</strong> Honda New City Sed. Touring 1.5 Flex 4P</li>
-                <li><strong>Ano:</strong> 2023</li>
-                <li><strong>Quilometragem:</strong> 16.541 km</li>
-                <li><strong>Transmissão:</strong> Automático</li>
-                <li><strong>Placa Final:</strong> 0</li>
-                <li><strong>Comodidades:</strong> Ar condicionado, direção elétrica, sistema de som</li>
-                <li><strong>Documentação:</strong> IPVA 2025 pago, Licenciamento e DPVAT por conta do comprador</li>
-            </ul>
-            <p><strong>Comitente:</strong> Banco Honda</p>
-        </div>
-        <div class="lance">
-            <h3>Lances Recentes</h3>
-            <p><strong>Último Lance:</strong> R$ 58.000,00 por T Rex</p>
-            <div class="timer">
-                <p><strong>Tempo restante:</strong> <span id="timer">02h 35m</span></p>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <img src="imagens/1.png" alt="Logotipo KN5 Store">
             </div>
-            <button class="btn-primary">Dar Lance</button>
-        </div>
-    </section>
+        </header>
 
-    <!-- Como Funciona -->
-    <section class="como-funciona">
-        <h2>Como Funciona</h2>
-        <ul>
-            <li><strong>Cadastro:</strong> Faça seu cadastro para começar a participar.</li>
-            <li><strong>Escolha o Lote:</strong> Selecione o lote que deseja arrematar.</li>
-            <li><strong>Dê o Lance:</strong> Faça seus lances no lote selecionado.</li>
-            <li><strong>Acompanhe:</strong> Receba notificações e atualizações sobre o andamento do leilão.</li>
-            <li><strong>Fechamento e Pagamento:</strong> Após o leilão, o vencedor será contatado para o pagamento.</li>
-        </ul>
-    </section>
+        <!-- Banner -->
+        <section class="banner">
+            <div class="banner-content">
+                <h1>Participe dos Melhores Leilões de Veículos e Produtos</h1>
+                <p>Lance agora e aproveite grandes oportunidades!</p>
+                <button class="btn-primary">Lance Agora</button>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
+        <!-- Lote 001 -->
+        <section class="lote">
+            <div class="lote-header">
+                <h2>Lote 001: Honda New City Sed. Touring 1.5 Flex 4P</h2>
+                <!-- Imagem do veículo no lote -->
+                <img src="imagens/1.png" alt="Honda New City Sed. Touring 1.5 Flex 4P" class="lote-image">
+                <p><strong>Valor: R$ 57.800,00 + Despesas</strong></p>
+            </div>
+            <div class="lote-info">
+                <h3>Descrição do Lote</h3>
+                <ul>
+                    <li><strong>Modelo:</strong> Honda New City Sed. Touring 1.5 Flex 4P</li>
+                    <li><strong>Ano:</strong> 2023</li>
+                    <li><strong>Quilometragem:</strong> 16.541 km</li>
+                    <li><strong>Transmissão:</strong> Automático</li>
+                    <li><strong>Placa Final:</strong> 0</li>
+                    <li><strong>Comodidades:</strong> Ar condicionado, direção elétrica, sistema de som</li>
+                    <li><strong>Documentação:</strong> IPVA 2025 pago, Licenciamento e DPVAT por conta do comprador</li>
+                </ul>
+                <p><strong>Comitente:</strong> Banco Honda</p>
+            </div>
+            <div class="lance">
+                <h3>Lances Recentes</h3>
+                <p><strong>Último Lance:</strong> R$ 58.000,00 por T Rex</p>
+                <div class="timer">
+                    <p><strong>Tempo restante:</strong> <span id="timer">02h 35m</span></p>
+                </div>
+                <button class="btn-primary">Dar Lance</button>
+            </div>
+        </section>
+
+        <!-- Como Funciona -->
+        <section class="como-funciona">
+            <h2>Como Funciona</h2>
             <ul>
-                <li><a href="#">Política de Privacidade</a></li>
-                <li><a href="#">Termos e Condições</a></li>
-                <li><a href="#">Fale Conosco</a></li>
-                <li><a href="#">Sobre Nós</a></li>
+                <li><strong>Cadastro:</strong> Faça seu cadastro para começar a participar.</li>
+                <li><strong>Escolha o Lote:</strong> Selecione o lote que deseja arrematar.</li>
+                <li><strong>Dê o Lance:</strong> Faça seus lances no lote selecionado.</li>
+                <li><strong>Acompanhe:</strong> Receba notificações e atualizações sobre o andamento do leilão.</li>
+                <li><strong>Fechamento e Pagamento:</strong> Após o leilão, o vencedor será contatado para o pagamento.</li>
             </ul>
-            <p>© 2025 KN5 Store | Todos os direitos reservados</p>
-        </div>
-    </footer>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <ul>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos e Condições</a></li>
+                    <li><a href="#">Fale Conosco</a></li>
+                    <li><a href="#">Sobre Nós</a></li>
+                </ul>
+                <p>© 2025 KN5 Store | Todos os direitos reservados</p>
+            </div>
+        </footer>
+    </div>
 
     <!-- Scripts -->
     <script src="script.js"></script>
