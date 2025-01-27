@@ -8,46 +8,207 @@
     <meta name="keywords" content="Leilão, Lances, Carros, Veículos, KN5 Store, Leilão de Carros">
     <meta name="author" content="KN5 Store">
     <title>KN5 Store - Leilão de Carros</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
+        /* Reset e estilo base */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica', sans-serif;
+            background-color: #141414; /* Preto */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Banner */
+        .banner {
+            background-color: #1f1f1f; /* Preto suave */
+            height: 400px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-        }
-        .container {
-            width: 80%;
-            max-width: 1000px;
             text-align: center;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 50px;
         }
-        h1, h2, p {
+
+        .banner h1 {
+            font-size: 50px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .banner p {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            padding: 12px 28px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #c0392b;
+        }
+
+        /* Lote */
+        .lote {
+            background-color: #222222; /* Preto suave */
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .lote-header h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .lote-header p {
+            font-size: 20px;
+            color: #e74c3c;
+        }
+
+        .lote-info ul {
+            list-style: none;
+            font-size: 18px;
             margin: 20px 0;
         }
-        .lote-header {
+
+        .lote-info li {
+            margin-bottom: 10px;
+        }
+
+        .lote-info li strong {
+            color: #e74c3c;
+        }
+
+        .lote-image {
+            max-width: 80%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .lance {
             margin-top: 30px;
         }
-        .btn-primary {
-            background-color: #FF9900;
-            color: #fff;
-            padding: 15px 30px;
+
+        .lance .timer {
+            font-size: 20px;
+            margin: 20px 0;
+            color: #f39c12;
+        }
+
+        .como-funciona {
+            background-color: #222222; /* Preto suave */
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .como-funciona h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .como-funciona ul {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
             font-size: 18px;
-            border: none;
-            cursor: pointer;
+            color: #ecf0f1;
+            text-align: left;
+        }
+
+        .como-funciona li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            padding: 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        footer ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        footer ul li a {
+            color: #e74c3c;
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
+            font-size: 18px;
         }
-        .btn-primary:hover {
-            background-color: #e68900;
+
+        footer ul li a:hover {
+            text-decoration: underline;
         }
-        .lote-info, .lance {
-            margin-top: 40px;
+
+        footer p {
+            font-size: 16px;
+            color: #95a5a6;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 36px;
+            }
+
+            .banner p {
+                font-size: 18px;
+            }
+
+            .btn-primary {
+                font-size: 16px;
+            }
+
+            .como-funciona ul {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -55,10 +216,20 @@
 <body>
 
     <div class="container">
+        <!-- Banner -->
+        <section class="banner">
+            <div class="banner-content">
+                <h1>Participe dos Melhores Leilões de Veículos e Produtos</h1>
+                <p>Lance agora e aproveite grandes oportunidades!</p>
+                <a href="https://link.mercadopago.com.br/fghchjjjfg" class="btn-primary" target="_blank">Lance Agora</a>
+            </div>
+        </section>
+
         <!-- Lote 001 -->
         <section class="lote">
             <div class="lote-header">
                 <h2>Lote 001: Honda New City Sed. Touring 1.5 Flex 4P</h2>
+                <img src="imagens/1.png" alt="Honda New City Sed. Touring 1.5 Flex 4P" class="lote-image">
                 <p><strong>Valor: R$ 57.800,00 + Despesas</strong></p>
             </div>
             <div class="lote-info">
@@ -80,12 +251,38 @@
                 <div class="timer">
                     <p><strong>Tempo restante:</strong> <span id="timer">02h 35m</span></p>
                 </div>
-                <!-- Redirecionamento para o link do Mercado Pago -->
                 <a href="https://link.mercadopago.com.br/fghchjjjfg" class="btn-primary" target="_blank">Dar Lance</a>
             </div>
         </section>
+
+        <!-- Como Funciona -->
+        <section class="como-funciona">
+            <h2>Como Funciona</h2>
+            <ul>
+                <li><strong>Cadastro:</strong> Faça seu cadastro para começar a participar.</li>
+                <li><strong>Escolha o Lote:</strong> Selecione o lote que deseja arrematar.</li>
+                <li><strong>Dê o Lance:</strong> Faça seus lances no lote selecionado.</li>
+                <li><strong>Acompanhe:</strong> Receba notificações e atualizações sobre o andamento do leilão.</li>
+                <li><strong>Fechamento e Pagamento:</strong> Após o leilão, o vencedor será contatado para o pagamento.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <ul>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos e Condições</a></li>
+                    <li><a href="#">Fale Conosco</a></li>
+                    <li><a href="#">Sobre Nós</a></li>
+                </ul>
+                <p>© 2025 KN5 Store | Todos os direitos reservados</p>
+            </div>
+        </footer>
     </div>
 
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
 
 </html>
