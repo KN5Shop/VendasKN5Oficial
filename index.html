@@ -1,363 +1,295 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Participe dos melhores leilões de veículos e produtos da KN5 Store. Lance agora e aproveite grandes oportunidades!">
-    <meta name="keywords" content="Leilão, Lances, Carros, Veículos, KN5 Store, Leilão de Carros">
-    <meta name="author" content="KN5 Store">
-    <title>KN5 Store - Leilão de Carros</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja Online - Promoções Imperdíveis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #141414;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            height: 100vh;
-            padding: 0;
-            margin: 0;
-            overflow-x: hidden;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            padding: 40px;
-            text-align: center;
-        }
+    /* Header de Urgência */
+    .header-urgencia {
+      background-color: #ff4500; /* Cor associada à urgência e ação */
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
 
-        /* Banner com maior realismo e foco */
-        .banner {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            height: 500px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            margin-bottom: 50px;
-            position: relative;
-            overflow: hidden;
-        }
+    .hero {
+      text-align: center;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        .banner::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('imagens/banner-bg.jpg') center/cover no-repeat;
-            opacity: 0.4;
-            z-index: -1;
-        }
+    .hero h2 {
+      font-size: 2.2rem;
+      color: #333;
+      margin: 20px 0 10px;
+      line-height: 1.4;
+    }
 
-        .banner h1 {
-            font-size: 60px;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.9);
-        }
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
 
-        .banner p {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #ecf0f1;
-        }
+    .cta-button {
+      background-color: #ff4500;
+      color: white;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      border: none;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-        .btn-primary {
-            padding: 18px 40px;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 20px;
-            text-transform: uppercase;
-            cursor: pointer;
-            letter-spacing: 2px;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
+    .cta-button:hover {
+      background-color: #e03d00;
+    }
 
-        .btn-primary:hover {
-            background-color: #c0392b;
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
 
-        .btn-primary:active {
-            transform: scale(0.98);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-        }
+    .product-card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s;
+    }
 
-        /* Lote */
-        .lote {
-            background-color: #222222;
-            padding: 50px;
-            border-radius: 15px;
-            margin-top: 40px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-            position: relative;
-        }
+    .product-card:hover {
+      transform: scale(1.05);
+    }
 
-        .lote-header h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            font-weight: bold;
-            color: #e74c3c;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-        }
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
 
-        .lote-header p {
-            font-size: 22px;
-            color: #e74c3c;
-            margin-bottom: 20px;
-        }
+    .product-card h3 {
+      font-size: 1.4rem;
+      color: #333;
+      margin: 10px 0;
+    }
 
-        .lote-info ul {
-            list-style: none;
-            font-size: 20px;
-            margin: 20px 0;
-            text-align: left;
-            color: #ecf0f1;
-        }
+    .product-card p {
+      font-size: 1rem;
+      color: #666;
+    }
 
-        .lote-info li {
-            margin-bottom: 12px;
-        }
+    .product-card .price {
+      font-size: 1.2rem;
+      color: #1a73e8;
+      font-weight: bold;
+      margin: 10px 0;
+    }
 
-        .lote-info li strong {
-            color: #e74c3c;
-        }
+    .product-card .discount {
+      font-size: 1rem;
+      color: #ff4500;
+      text-decoration: line-through;
+      margin-right: 5px;
+    }
 
-        .lote-image {
-            max-width: 80%;
-            height: auto;
-            margin: 20px 0;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-            border: 3px solid #e74c3c;
-        }
+    .product-card button {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-        .lance {
-            margin-top: 30px;
-        }
+    /* Efeito hover no botão */
+    .product-card button:hover {
+      background-color: #1668c1;
+      transform: scale(1.1); /* Aumenta o botão um pouco ao passar o mouse */
+    }
 
-        .lance .timer {
-            font-size: 24px;
-            margin: 20px 0;
-            color: #f39c12;
-        }
+    .product-card .prova-social {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #888;
+    }
 
-        /* Como Funciona */
-        .como-funciona {
-            background-color: #222222;
-            padding: 50px;
-            margin-top: 60px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-        }
+    footer {
+      background-color: #1a73e8;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
 
-        .como-funciona h2 {
-            font-size: 40px;
-            margin-bottom: 40px;
-            font-weight: bold;
-            color: #e74c3c;
-        }
-
-        .como-funciona ul {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            font-size: 20px;
-            color: #ecf0f1;
-            text-align: left;
-        }
-
-        .como-funciona li {
-            margin-bottom: 12px;
-        }
-
-        .como-funciona li strong {
-            color: #e74c3c;
-        }
-
-        footer {
-            background-color: #1f1f1f;
-            padding: 20px;
-            margin-top: 80px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        footer ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 15px;
-        }
-
-        footer ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        footer ul li a {
-            color: #e74c3c;
-            text-decoration: none;
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
-
-        footer ul li a:hover {
-            color: #c0392b;
-        }
-
-        footer p {
-            font-size: 18px;
-            color: #95a5a6;
-        }
-
-        @media (max-width: 768px) {
-            .banner h1 {
-                font-size: 45px;
-            }
-
-            .banner p {
-                font-size: 18px;
-            }
-
-            .btn-primary {
-                font-size: 18px;
-            }
-
-            .como-funciona ul {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <!-- Banner -->
-        <section class="banner">
-            <div class="banner-content">
-                <h1>Participe dos Melhores Leilões de Veículos e Produtos</h1>
-                <p>Lance agora e aproveite grandes oportunidades!</p>
-                <a href="https://link.mercadopago.com.br/fghchjjjfg" class="btn-primary" target="_blank">Lance Agora</a>
-            </div>
-        </section>
 
-        <!-- Lote 001 -->
-        <section class="lote">
-            <div class="lote-header">
-                <h2>Lote 001: Honda New City Sed. Touring 1.5 Flex 4P</h2>
-                <img src="imagens/1.png" alt="Honda New City Sed. Touring 1.5 Flex 4P" class="lote-image">
-                <p><strong>Valor: R$ 57.800,00 + Despesas</strong></p>
-            </div>
-            <div class="lote-info">
-                <h3>Descrição do Lote</h3>
-                <ul>
-                    <li><strong>Modelo:</strong> Honda New City Sed. Touring 1.5 Flex 4P</li>
-                    <li><strong>Ano:</strong> 2023</li>
-                    <li><strong>Quilometragem:</strong> 16.541 km</li>
-                    <li><strong>Transmissão:</strong> Automático</li>
-                    <li><strong>Placa Final:</strong> 0</li>
-                    <li><strong>Comodidades:</strong> Ar condicionado, direção elétrica, sistema de som</li>
-                    <li><strong>Documentação:</strong> IPVA 2025 pago, Licenciamento e DPVAT por conta do comprador</li>
-                </ul>
-                <p><strong>Comitente:</strong> Banco Honda</p>
-            </div>
-            <div class="lance">
-                <h3>Lances Recentes</h3>
-                <p><strong>Último Lance:</strong> R$ 500,00 por André</p>
-                <div class="timer">
-                    <p><strong>Tempo restante:</strong> <span id="timer">24h 00m</span></p>
-                </div>
-                <a href="https://link.mercadopago.com.br/fghchjjjfg" class="btn-primary" target="_blank">Dar Lance</a>
-            </div>
-        </section>
+  <!-- Header de Urgência -->
+  <div class="header-urgencia">
+    Oferta válida somente essa semana
+  </div>
 
-        <!-- Como Funciona -->
-        <section class="como-funciona">
-            <h2>Como Funciona</h2>
-            <ul>
-                <li><strong>Cadastro:</strong> Faça seu cadastro para começar a participar.</li>
-                <li><strong>Escolha o Lote:</strong> Selecione o lote que deseja arrematar.</li>
-                <li><strong>Dê o Lance:</strong> Faça seus lances no lote selecionado.</li>
-                <li><strong>Acompanhe:</strong> Receba notificações e atualizações sobre o andamento do leilão.</li>
-                <li><strong>Fechamento e Pagamento:</strong> Após o leilão, o vencedor será contatado para o pagamento.</li>
-            </ul>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <div class="footer-content">
-                <ul>
-                    <li><a href="#">Política de Privacidade</a></li>
-                    <li><a href="#">Termos e Condições</a></li>
-                    <li><a href="#">Fale Conosco</a></li>
-                    <li><a href="#">Sobre Nós</a></li>
-                </ul>
-                <p>© 2025 KN5 Store | Todos os direitos reservados</p>
-            </div>
-        </footer>
+  <div class="container">
+    <!-- Seção Hero -->
+    <div class="hero">
+      <h2><span style="color: #ff4500;">Última Chance:</span> Economize Até 50% Hoje!</h2>
+      <p>
+        Descubra os segredos para aproveitar as ofertas que estão mudando a vida de nossos clientes.
+        Estoques limitados e preços que você não verá novamente. Decida agora!
+      </p>
+      <a href="#produtos">
+        <button class="cta-button">Aproveitar Agora</button>
+      </a>
     </div>
 
-    <script>
-        // Função para calcular e atualizar o timer ao vivo
-        function startCountdown() {
-            const startTime = localStorage.getItem("startTime");
+    <!-- Lista de Produtos -->
+    <div class="products" id="produtos">
+      <!-- Produto 1: 1 Caixa -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscara Descartável Descarpack">
+        <h3>1 Caixa de Máscaras Descartáveis Descarpack (50 Unidades)</h3>
+        <p>Proteção e conforto em cada uso. Ideal para o seu dia a dia.</p>
+        <p class="price">
+          <span class="discount">De: R$ 10,00</span>
+          Por: <span style="color: #ff4500;">R$ 5,00</span>
+        </p>
+        <a href="https://biolivre.com.br/descarpack/692062686-4126e2f0-20d3-4220-a43a-fde19d5579a0" target="_blank">
+          <button>Comprar Agora</button>
+        </a>
+        <div class="prova-social">
+          <p>★★★★★ - "Excelente qualidade!"</p>
+          <p>Mais de 350 compras realizadas!</p>
+        </div>
+      </div>
 
-            // Se o horário de início não foi salvo, define o momento atual como o horário de início
-            if (!startTime) {
-                const newStartTime = new Date().getTime();
-                localStorage.setItem("startTime", newStartTime);
-            }
+      <!-- Produto 2: Ventilador -->
+      <div class="product-card">
+        <img src="imagens/2.jpg" alt="Ventilador Super Power Mondial Preto 60w">
+        <h3>Ventilador Super Power Mondial Preto 60w</h3>
+        <p>Potente, silencioso e com design moderno. Garanta já o seu!</p>
+        <p class="price">
+          <span class="discount">De: R$ 159,00</span>
+          Por: <span style="color: #ff4500;">R$ 50,00</span>
+        </p>
+        <a href="#" target="_blank">
+          <button>Comprar Agora</button>
+        </a>
+        <div class="prova-social">
+          <p>★★★★★ - "Ótima ventilação!"</p>
+          <p>Mais de 200 compras realizadas!</p>
+        </div>
+      </div>
 
-            // Obtém o horário de início salvo no localStorage
-            const endDate = parseInt(localStorage.getItem("startTime")) + (24 * 60 * 60 * 1000); // 24 horas
+      <!-- Produto 3: 10 Caixas -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
+        <h3>10 Caixas de Máscaras Descartáveis Descarpack (500 Unidades)</h3>
+        <p>Oferta imperdível para quem deseja maior economia com proteção. Estoques limitados!</p>
+        <p class="price">
+          <span class="discount">De: R$ 100,00</span>
+          Por: <span style="color: #ff4500;">R$ 50,00</span>
+        </p>
+        <a href="https://biolivre.com.br/descarpack/692062686-6680abd4-a5fb-4125-984f-471bece610ff" target="_blank">
+          <button>Comprar Agora</button>
+        </a>
+        <div class="prova-social">
+          <p>★★★★★ - "Entrega rápida e produto de qualidade!"</p>
+          <p>Mais de 600 compras realizadas!</p>
+        </div>
+      </div>
 
-            const timerElement = document.getElementById("timer");
+      <!-- Produto 4: 50 Caixas -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
+        <h3>50 Caixas de Máscaras Descartáveis Descarpack (2500 Unidades)</h3>
+        <p>Proteção em grande escala. Ideal para empresas ou revenda.</p>
+        <p class="price">
+          <span class="discount">De: R$ 500,00</span>
+          Por: <span style="color: #ff4500;">R$ 250,00</span>
+        </p>
+        <a href="https://biolivre.com.br/descarpack/692062686-f48e0b6e-268a-46a6-a89c-d22dc992fbf4" target="_blank">
+          <button>Comprar Agora</button>
+        </a>
+        <div class="prova-social">
+          <p>★★★★☆ - "Excelente custo-benefício!"</p>
+          <p>Mais de 250 compras realizadas!</p>
+        </div>
+      </div>
 
-            function updateTimer() {
-                const now = new Date().getTime();
-                const timeRemaining = endDate - now;
+      <!-- Produto 5: 100 Caixas -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
+        <h3>100 Caixas de Máscaras Descartáveis Descarpack (5000 Unidades)</h3>
+        <p>Estoque massivo para atender grandes necessidades. Garanta a maior economia!</p>
+        <p class="price">
+          <span class="discount">De: R$ 1000,00</span>
+          Por: <span style="color: #ff4500;">R$ 500,00</span>
+        </p>
+        <a href="https://biolivre.com.br/descarpack/692062686-e38852b1-f6e7-45ce-ab26-36dd49bdb995" target="_blank">
+          <button>Comprar Agora</button>
+        </a>
+        <div class="prova-social">
+          <p>★★★★☆ - "Compra rápida e segura!"</p>
+          <p>Mais de 150 compras realizadas!</p>
+        </div>
+      </div>
 
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    timerElement.textContent = "Leilão Finalizado!";
-                    return;
-                }
+      <!-- Produto 6: 500 Caixas -->
+      <div class="product-card">
+        <img src="imagens/1.png" alt="Máscaras Descartáveis Descarpack">
+        <h3>500 Caixas de Máscaras Descartáveis Descarpack (25.000 Unidades)</h3>
+        <p>A maior oferta. Ideal para grandes negócios ou revendedores.</p>
+        <p class="price">
+          <span class="discount">De: R$ 5000,00</span>
+          Por: <span style="color: #ff4500;">R$ 2500,00</span>
+        </p>
+        <a href="https://biolivre.com.br/descarpack/692062686-aa85ab40-fbb9-499e-9e21-03b2d97a15ea" target="_blank">
+          <button>Comprar Agora</button>
+        </a>
+        <div class="prova-social">
+          <p>★★★☆☆ - "Muito bom, preço atrativo!"</p>
+          <p>Mais de 50 compras realizadas!</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
-                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+  <footer>
+    <p>© 2025 Nossa Loja. Todos os direitos reservados.</p>
+  </footer>
 
-                timerElement.textContent = `${hours}h ${minutes}m ${seconds}s`;
-            }
-
-            updateTimer(); // Atualiza imediatamente
-            const timerInterval = setInterval(updateTimer, 1000); // Atualiza a cada segundo
-        }
-
-        // Inicia a contagem regressiva assim que a página carrega
-        window.onload = startCountdown;
-    </script>
 </body>
-
 </html>
