@@ -133,7 +133,7 @@ body {
 }
 
 footer {
-  background-color: #993399; /* Cor roxa */
+  background-color: #993399 !important; /* Cor roxa com !important para garantir que sobreponha outras regras */
   color: white;
   text-align: center;
   padding: 10px 0;
