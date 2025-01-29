@@ -87,11 +87,10 @@ body {
 }
 
 .product-card img {
-    max-width: 100%;
+    width: 100%;
     height: 200px; /* Mantém a altura consistente */
-    object-fit: cover; /* Mantém o aspecto da imagem, cobrindo o contêiner */
-    object-position: center center; /* Ajusta o foco para o centro da imagem */
-    transform: scale(0.9); /* Aplica um leve zoom-out sem alterar o tamanho */
+    object-fit: contain; /* Ajuste para exibir a imagem de forma menos "esticada" */
+    object-position: center; /* Centraliza a imagem dentro do contêiner */
     border-radius: 8px;
 }
 
