@@ -76,148 +76,65 @@ body {
     transform: scale(0.98);
 }
 
-/* Lote de leilão */
-.lote {
-    background-color: #222222; /* Preto suave */
-    padding: 50px;
-    border-radius: 12px;
-    margin-top: 40px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    position: relative;
-}
-
-.lote-header h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #e74c3c;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-}
-
-.lote-header p {
-    font-size: 22px;
-    color: #e74c3c;
-    margin-bottom: 20px;
-}
-
-.lote-info ul {
-    list-style: none;
-    font-size: 20px;
-    margin: 20px 0;
-    text-align: left;
-    color: #ecf0f1;
-}
-
-.lote-info li {
-    margin-bottom: 12px;
-}
-
-.lote-info li strong {
-    color: #e74c3c;
-}
-
-.lote-image {
-    max-width: 80%;
-    height: auto;
-    margin: 20px 0;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    border: 3px solid #e74c3c;
-}
-
-.lance {
-    margin-top: 30px;
-}
-
-.lance .timer {
-    font-size: 24px;
-    margin: 20px 0;
-    color: #f39c12;
-}
-
-/* Como funciona */
-.como-funciona {
-    background-color: #222222; /* Preto suave */
-    padding: 50px;
-    margin-top: 60px;
-    text-align: center;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-}
-
-.como-funciona h2 {
-    font-size: 40px;
-    margin-bottom: 40px;
-    font-weight: bold;
-    color: #e74c3c;
-}
-
-.como-funciona ul {
+/* Estilização dos produtos */
+.products {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    font-size: 20px;
-    color: #ecf0f1;
-    text-align: left;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
 }
 
-.como-funciona li {
-    margin-bottom: 12px;
-}
-
-/* Footer */
-footer {
-    background-color: #1f1f1f;
-    padding: 20px;
-    margin-top: 80px;
-    text-align: center;
+.product-card {
+    background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s;
+    color: #000;
 }
 
-footer ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 15px;
+.product-card:hover {
+    transform: scale(1.05);
 }
 
-footer ul li {
-    display: inline;
-    margin: 0 15px;
+.product-card img {
+    width: 100%;
+    height: 200px; /* Altura padronizada */
+    object-fit: cover; /* Mantém o aspecto sem distorcer */
+    border-radius: 8px;
 }
 
-footer ul li a {
-    color: #e74c3c;
-    text-decoration: none;
-    font-size: 20px;
-    transition: color 0.3s ease;
+.product-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin: 10px 0;
 }
 
-footer ul li a:hover {
-    color: #c0392b;
+.product-card p {
+    font-size: 1rem;
+    color: #666;
 }
 
-footer p {
-    font-size: 18px;
-    color: #95a5a6;
+.product-card .price {
+    font-size: 1.2rem;
+    color: #1a73e8;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .banner h1 {
-        font-size: 45px;
-    }
+.product-card button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-    .banner p {
-        font-size: 18px;
-    }
-
-    .btn-primary {
-        font-size: 18px;
-    }
-
-    .como-funciona ul {
-        grid-template-columns: 1fr;
-    }
+.product-card button:hover {
+    background-color: #1668c1;
+    transform: scale(1.1);
 }
