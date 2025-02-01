@@ -1,39 +1,43 @@
-/* Garante que a página ocupe toda a tela sem ultrapassar a largura */
+/* Garante que a página ocupe toda a tela sem ultrapassar os limites */
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    max-width: 100%;
+    width: 100%; /* Alterado de 100vw para 100% */
     height: 100%;
-    overflow-x: hidden; /* Impede rolagem horizontal */
+    max-width: 100%; /* Alterado de 100vw para 100% */
+    overflow-x: hidden; /* Impede rolagem lateral */
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Cor de fundo opcional */
+    background-color: #f8f9fa;
 }
 
-/* Container principal responsivo */
+/* Container centralizado e ajustável para qualquer tela */
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    box-sizing: border-box; /* Mantém padding dentro da largura */
+    min-height: 100vh;
+    padding: 40px;
+    box-sizing: border-box;
 }
 
-/* Imagens responsivas */
+/* Garante que imagens sempre fiquem dentro da tela */
 img {
     max-width: 100%;
     height: auto;
-    display: block; /* Evita espaços extras abaixo da imagem */
+    display: block;
 }
 
-/* Ajuste de vídeos embutidos para caber na tela */
-iframe {
+/* Torna vídeos totalmente responsivos */
+iframe, video {
     max-width: 100%;
     width: 100%;
     height: auto;
 }
 
-/* Botões responsivos */
+/* Botões que se ajustam ao tamanho da tela */
 button {
     width: 100%;
     max-width: 300px;
@@ -46,31 +50,69 @@ button {
     border-radius: 5px;
 }
 
-/* Corrige possíveis elementos com largura maior que a tela */
+/* Evita que elementos ultrapassem os limites */
 * {
     max-width: 100%;
+    box-sizing: border-box;
 }
 
-/* Ajustes para telas menores (tablets e celulares) */
-@media screen and (max-width: 768px) {
+/* Ajustes para telas médias (tablets e celulares grandes) */
+@media screen and (max-width: 1024px) {
     .container {
-        padding: 10px;
+        padding: 20px;
     }
     button {
-        font-size: 14px;
-        padding: 12px;
+        font-size: 15px;
+        padding: 14px;
     }
 }
 
-/* Ajustes para telas muito pequenas (celulares pequenos) */
+/* Ajustes para celulares pequenos (ex: iPhone 5, Galaxy Pocket) */
 @media screen and (max-width: 480px) {
     body {
         font-size: 14px;
     }
     h1 {
         font-size: 20px;
+        text-align: center;
     }
     p {
         font-size: 14px;
+        text-align: center;
+    }
+}
+
+/* Ajustes para telas minúsculas (ex: Unihertz Jelly) */
+@media screen and (max-width: 320px) {
+    body {
+        font-size: 12px;
+    }
+    h1 {
+        font-size: 16px;
+    }
+    p {
+        font-size: 12px;
+    }
+    button {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+
+/* Ajustes para telas grandes (Desktops e notebooks) */
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 900px; /* Mantém o conteúdo centralizado em telas largas */
+    }
+    h1 {
+        font-size: 32px;
+    }
+    p {
+        font-size: 18px;
+    }
+    button {
+        max-width: 400px;
+        font-size: 18px;
+        padding: 16px;
     }
 }
