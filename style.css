@@ -1,59 +1,51 @@
-/* Reseta as margens e o padding padrão do navegador */
-* {
+/* Garante que a página ocupe toda a tela sem ultrapassar os limites */
+html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-/* Define o layout básico */
-html, body {
     width: 100%;
     height: 100%;
-    font-family: Arial, sans-serif; /* Fontes padrão */
-    background-color: #f8f9fa; /* Cor de fundo neutra */
-    color: #333; /* Cor do texto */
+    overflow-x: hidden; /* Evita rolagem lateral */
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
 }
 
-/* Configuração do container principal */
+/* Container principal */
 .container {
     width: 100%;
-    max-width: 1200px; /* Limita a largura máxima */
-    margin: 0 auto; /* Centraliza o container */
-    padding: 20px; /* Espaçamento interno */
-    box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura e altura */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 }
 
-/* Títulos e textos */
-h1, h2, h3, h4 {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    margin-bottom: 10px;
+/* Evita que qualquer elemento ultrapasse os limites */
+* {
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
-/* Estilo de parágrafos */
-p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    text-align: left; /* Ajusta a alinhamento do texto */
-}
-
-/* Imagens responsivas */
-img {
-    width: 100%;
+/* Garante que imagens e vídeos não ultrapassem a tela */
+img, iframe, video {
+    max-width: 100%;
     height: auto;
-    display: block; /* Impede a quebra de linha ao redor da imagem */
+    display: block;
 }
 
-/* Estilo de botões */
+/* Para garantir que o layout não ultrapasse a tela */
+.main-content, .sidebar, .content {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ajuste de botões */
 button {
     padding: 16px 30px;
-    background-color: #007bff; /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
+    background-color: #007bff;
+    color: white;
     font-size: 18px;
     border: none;
     border-radius: 5px;
@@ -63,57 +55,23 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Cor ao passar o mouse */
+    background-color: #0056b3;
 }
 
-/* Links */
-a {
-    color: #007bff; /* Cor do link */
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline; /* Sublinha ao passar o mouse */
-}
-
-/* Estilo do rodapé */
-footer {
-    width: 100%;
-    padding: 20px;
-    background-color: #343a40;
-    color: white;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-}
-
-/* Estilo para o layout da página */
-.main-content {
-    width: 100%;
+/* Ajustes para o layout de grid */
+.grid-container {
     display: grid;
-    grid-template-columns: 1fr 3fr; /* Define uma coluna para a barra lateral e 3 colunas para o conteúdo principal */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
 }
 
-.sidebar {
-    background-color: #e9ecef;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.content {
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 5px;
-}
-
-/* Responsividade para telas grandes */
+/* Melhoria do layout para telas grandes (Desktops e notebooks) */
 @media screen and (min-width: 1024px) {
     .container {
-        padding: 40px; /* Ajusta o padding para telas maiores */
+        padding: 40px;
     }
 
-    /* Ajuste de tamanhos de fontes */
+    /* Ajuste de fontes e tamanhos */
     h1 {
         font-size: 36px;
     }
@@ -130,53 +88,4 @@ footer {
         padding: 18px 35px;
         font-size: 20px;
     }
-}
-
-/* Estilo para cabeçalhos de navegação */
-nav {
-    width: 100%;
-    background-color: #343a40;
-    padding: 15px;
-}
-
-nav ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-}
-
-nav ul li {
-    margin: 0 10px;
-}
-
-nav a {
-    color: white;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Melhorias para layouts de grades */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas no layout */
-    gap: 20px;
-}
-
-.grid-item {
-    background-color: #e9ecef;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-/* Ajuste para imagens de fundo ou elementos grandes */
-.full-width {
-    width: 100%;
-    height: 500px;
-    background: url('background.jpg') no-repeat center center/cover;
-    border-radius: 5px;
 }
