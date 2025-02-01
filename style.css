@@ -1,0 +1,50 @@
+/* Garante que a página ocupe toda a tela */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Layout responsivo */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Ajusta imagens para não ficarem maiores que a tela */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Botões responsivos */
+button {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+/* Media queries para diferentes tamanhos de tela */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    button {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+}
