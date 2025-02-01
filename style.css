@@ -1,16 +1,16 @@
-/* Remove margens e garante que a largura nunca ultrapasse a tela */
+/* Garante que a página ocupe toda a tela sem ultrapassar os limites */
 html, body {
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100%;
     max-width: 100vw;
-    overflow-x: hidden; /* Impede rolagem horizontal */
+    overflow-x: hidden; /* Impede rolagem lateral */
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Cor de fundo leve */
+    background-color: #f8f9fa;
 }
 
-/* Define um container flexível que se ajusta a qualquer tela */
+/* Container centralizado e ajustável para qualquer tela */
 .container {
     display: flex;
     flex-direction: column;
@@ -19,11 +19,11 @@ html, body {
     width: 100%;
     max-width: 1200px;
     min-height: 100vh;
-    padding: 20px;
+    padding: 40px;
     box-sizing: border-box;
 }
 
-/* Garante que imagens nunca fiquem maiores que a tela */
+/* Garante que imagens sempre fiquem dentro da tela */
 img {
     max-width: 100%;
     height: auto;
@@ -50,30 +50,30 @@ button {
     border-radius: 5px;
 }
 
-/* Impede elementos de ultrapassarem a largura */
+/* Evita que elementos ultrapassem os limites */
 * {
-    max-width: 100% !important;
+    max-width: 100%;
     box-sizing: border-box;
 }
 
-/* Ajustes para telas médias (tablets e celulares comuns) */
-@media screen and (max-width: 768px) {
+/* Ajustes para telas médias (tablets e celulares grandes) */
+@media screen and (max-width: 1024px) {
     .container {
-        padding: 10px;
+        padding: 20px;
     }
     button {
-        font-size: 14px;
-        padding: 12px;
+        font-size: 15px;
+        padding: 14px;
     }
 }
 
-/* Ajustes para celulares pequenos (ex: iPhone 4, Nokia antigos) */
+/* Ajustes para celulares pequenos (ex: iPhone 5, Galaxy Pocket) */
 @media screen and (max-width: 480px) {
     body {
         font-size: 14px;
     }
     h1 {
-        font-size: 18px;
+        font-size: 20px;
         text-align: center;
     }
     p {
@@ -82,7 +82,7 @@ button {
     }
 }
 
-/* Ajustes para telas minúsculas (menores celulares do mundo) */
+/* Ajustes para telas minúsculas (ex: Unihertz Jelly) */
 @media screen and (max-width: 320px) {
     body {
         font-size: 12px;
@@ -96,5 +96,23 @@ button {
     button {
         font-size: 12px;
         padding: 10px;
+    }
+}
+
+/* Ajustes para telas grandes (Desktops e notebooks) */
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 900px; /* Mantém o conteúdo centralizado em telas largas */
+    }
+    h1 {
+        font-size: 32px;
+    }
+    p {
+        font-size: 18px;
+    }
+    button {
+        max-width: 400px;
+        font-size: 18px;
+        padding: 16px;
     }
 }
