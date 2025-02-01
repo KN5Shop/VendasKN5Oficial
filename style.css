@@ -1,26 +1,43 @@
-/* Garante que a página ocupe toda a tela */
+/* Remove margens e garante que a largura nunca ultrapasse a tela */
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 100vw;
     height: 100%;
+    max-width: 100vw;
+    overflow-x: hidden; /* Impede rolagem horizontal */
     font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Cor de fundo leve */
 }
 
-/* Layout responsivo */
+/* Define um container flexível que se ajusta a qualquer tela */
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     max-width: 1200px;
-    margin: auto;
+    min-height: 100vh;
     padding: 20px;
+    box-sizing: border-box;
 }
 
-/* Ajusta imagens para não ficarem maiores que a tela */
+/* Garante que imagens nunca fiquem maiores que a tela */
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
-/* Botões responsivos */
+/* Torna vídeos totalmente responsivos */
+iframe, video {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+/* Botões que se ajustam ao tamanho da tela */
 button {
     width: 100%;
     max-width: 300px;
@@ -30,9 +47,16 @@ button {
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    border-radius: 5px;
 }
 
-/* Media queries para diferentes tamanhos de tela */
+/* Impede elementos de ultrapassarem a largura */
+* {
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Ajustes para telas médias (tablets e celulares comuns) */
 @media screen and (max-width: 768px) {
     .container {
         padding: 10px;
@@ -43,8 +67,34 @@ button {
     }
 }
 
+/* Ajustes para celulares pequenos (ex: iPhone 4, Nokia antigos) */
 @media screen and (max-width: 480px) {
     body {
         font-size: 14px;
+    }
+    h1 {
+        font-size: 18px;
+        text-align: center;
+    }
+    p {
+        font-size: 14px;
+        text-align: center;
+    }
+}
+
+/* Ajustes para telas minúsculas (menores celulares do mundo) */
+@media screen and (max-width: 320px) {
+    body {
+        font-size: 12px;
+    }
+    h1 {
+        font-size: 16px;
+    }
+    p {
+        font-size: 12px;
+    }
+    button {
+        font-size: 12px;
+        padding: 10px;
     }
 }
