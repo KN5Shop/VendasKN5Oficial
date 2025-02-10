@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aplicação de gestão financeira com funcionalidades avançadas.">
+    <meta name="description" content="Aplicação de gestão financeira com funcionalidades avançadas e design moderno.">
     <meta name="author" content="Keven Souza">
     <title>Gestão Financeira</title>
 
@@ -15,19 +15,43 @@
             box-sizing: border-box;
         }
 
+        /* Variáveis de Cores */
+        :root {
+            --color-primary-light: #6c63ff;
+            --color-primary-dark: #4b3fbc;
+            --color-background-light: #f4f4f4;
+            --color-background-dark: #333;
+            --color-text-light: #333;
+            --color-text-dark: #f4f4f4;
+            --color-button-bg: #007bff;
+            --color-button-hover: #0056b3;
+        }
+
+        /* Tema Claro */
+        body.light {
+            background-color: var(--color-background-light);
+            color: var(--color-text-light);
+        }
+
+        /* Tema Escuro */
+        body.dark {
+            background-color: var(--color-background-dark);
+            color: var(--color-text-dark);
+        }
+
         /* Estilos gerais */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header, footer {
-            background-color: #333;
+            background-color: var(--color-primary-light);
             color: white;
             padding: 10px;
             text-align: center;
+            border-radius: 8px;
         }
 
         main {
@@ -35,7 +59,24 @@
         }
 
         h1, h2 {
+            font-size: 1.8em;
             margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Cartões e Listas */
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .content-list {
@@ -48,20 +89,49 @@
             border-bottom: 1px solid #ddd;
         }
 
+        /* Barra de Pesquisa */
         .search-bar {
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .search-bar input {
-            padding: 8px;
-            width: 200px;
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            transition: border-color 0.3s;
         }
 
-        .wishlist, .reviews {
-            margin-top: 20px;
+        .search-bar input:focus {
+            border-color: var(--color-primary-light);
+            outline: none;
         }
 
-        /* Modal de consentimento de cookies */
+        /* Botões */
+        button {
+            background-color: var(--color-button-bg);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--color-button-hover);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Modal de Consentimento de Cookies */
         .modal {
             display: none;
             position: fixed;
@@ -73,6 +143,12 @@
             padding: 15px;
             border-radius: 8px;
             text-align: center;
+            transition: opacity 0.3s;
+        }
+
+        .modal.show {
+            display: block;
+            opacity: 1;
         }
 
         .modal button {
@@ -88,26 +164,30 @@
             outline: none;
         }
 
-        /* Estilos para gamificação */
-        .points {
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        .points span {
-            color: #007bff;
-        }
-
         /* Layout Responsivo */
         @media (max-width: 768px) {
             .search-bar input {
-                width: 100%;
+                width: 90%;
+            }
+
+            .card {
+                padding: 15px;
             }
         }
-    </style>
 
+        /* Animações e Transições */
+        .fade {
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .fade.show {
+            opacity: 1;
+        }
+
+    </style>
 </head>
-<body>
+<body class="light">
 
 <header>
     <h1>Gestão Financeira</h1>
@@ -120,23 +200,26 @@
     </div>
 
     <!-- Lista de Transações -->
-    <ul id="contentList" class="content-list">
-        <li>Transação 1: Compra de supermercado</li>
-        <li>Transação 2: Pagamento de contas</li>
-        <li>Transação 3: Depósito bancário</li>
-        <li>Transação 4: Compra online</li>
-        <li>Transação 5: Transferência entre contas</li>
-    </ul>
+    <div class="card">
+        <h2>Transações Recentes</h2>
+        <ul id="contentList" class="content-list">
+            <li>Transação 1: Compra de supermercado</li>
+            <li>Transação 2: Pagamento de contas</li>
+            <li>Transação 3: Depósito bancário</li>
+            <li>Transação 4: Compra online</li>
+            <li>Transação 5: Transferência entre contas</li>
+        </ul>
+    </div>
 
     <!-- Wishlist -->
-    <div class="wishlist">
+    <div class="card">
         <h2>Lista de Desejos</h2>
         <button id="addToWishlist">Adicionar à Wishlist</button>
         <ul id="wishlistItems"></ul>
     </div>
 
     <!-- Avaliações -->
-    <div class="reviews">
+    <div class="card">
         <h2>Avaliações</h2>
         <form id="reviewForm">
             <textarea id="reviewText" placeholder="Deixe sua avaliação..." required></textarea><br>
@@ -146,18 +229,21 @@
     </div>
 
     <!-- Feedback Gamificação -->
-    <div class="points" id="points">Pontos: <span>0</span></div>
+    <div class="card">
+        <h2>Pontos Acumulados</h2>
+        <div id="points">Pontos: <span>0</span></div>
+    </div>
+
+    <!-- Upload de Arquivos (Arraste e Solte) -->
+    <div id="fileUpload" class="card">
+        <p>Arraste e solte arquivos aqui para upload</p>
+        <input type="file" id="fileInput" style="display: none;" />
+    </div>
 
     <!-- Modal de Consentimento de Cookies -->
     <div id="cookieConsentModal" class="modal">
         <p>Este site usa cookies para melhorar a sua experiência. Ao continuar, você aceita nossa política de cookies.</p>
         <button id="acceptCookies">Aceitar</button>
-    </div>
-
-    <!-- Upload de Arquivos (Arraste e Solte) -->
-    <div id="fileUpload" style="margin-top: 20px; padding: 20px; border: 1px dashed #333;">
-        <p>Arraste e solte arquivos aqui para upload</p>
-        <input type="file" id="fileInput" style="display: none;" />
     </div>
 
 </main>
@@ -169,7 +255,7 @@
 <script>
     // Carregamento Assíncrono de Scripts
     document.addEventListener("DOMContentLoaded", function() {
-        // Personalização de Conteúdo
+        // Personalização de Tema
         const userTheme = localStorage.getItem('theme') || 'light';
         document.body.classList.add(userTheme);
 
@@ -178,12 +264,12 @@
         const acceptCookies = document.getElementById('acceptCookies');
         
         if (!localStorage.getItem('cookiesAccepted')) {
-            cookieConsentModal.style.display = 'block';
+            cookieConsentModal.classList.add('show');
         }
-        
+
         acceptCookies.addEventListener('click', function() {
             localStorage.setItem('cookiesAccepted', 'true');
-            cookieConsentModal.style.display = 'none';
+            cookieConsentModal.classList.remove('show');
         });
 
         // Wishlist
@@ -235,24 +321,28 @@
             });
         });
 
-        // Upload de Arquivos (Arraste e Solte)
-        const fileUpload = document.getElementById('fileUpload');
+        // Arraste e Solte para Upload de Arquivos
         const fileInput = document.getElementById('fileInput');
-        
-        fileUpload.addEventListener('dragover', function(e) {
+        const fileUpload = document.getElementById('fileUpload');
+
+        fileUpload.addEventListener('dragover', (e) => {
             e.preventDefault();
+            fileUpload.style.backgroundColor = '#eaeaea';
         });
 
-        fileUpload.addEventListener('drop', function(e) {
-            e.preventDefault();
-            fileInput.files = e.dataTransfer.files;
+        fileUpload.addEventListener('dragleave', () => {
+            fileUpload.style.backgroundColor = '#fff';
         });
 
-        fileUpload.addEventListener('click', function() {
-            fileInput.click();
+        fileUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUpload.style.backgroundColor = '#fff';
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+            }
         });
     });
 </script>
-
 </body>
 </html>
